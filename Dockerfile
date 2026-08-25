@@ -3,6 +3,7 @@ FROM europe-north1-docker.pkg.dev/cgr-nav/pull-through/nav.no/node:24-dev AS bui
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml .npmrc ./
+
 RUN --mount=type=secret,id=npm_auth_token \
     pnpm config set //npm.pkg.github.com/:_authToken $(cat /run/secrets/npm_auth_token) && \
     pnpm install --frozen-lockfile --ignore-scripts
