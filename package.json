@@ -1,0 +1,62 @@
+{
+    "name": "arbeidsplassen-lab",
+    "version": "0.1.0",
+    "description": "Prototype-playground for arbeidsplassen.no — mockede sider for konseptutvikling og brukertesting",
+    "type": "module",
+    "packageManager": "pnpm@10.32.1",
+    "engines": {
+        "node": "24.x"
+    },
+    "scripts": {
+        "dev": "next dev -p 3006",
+        "build": "next build",
+        "start": "next start",
+        "lint": "biome check .",
+        "lint:fix": "biome check --write .",
+        "format": "biome format --write .",
+        "compileTS": "tsc --noEmit",
+        "test": "vitest run",
+        "test:watch": "vitest watch",
+        "prepare": "husky"
+    },
+    "dependencies": {
+        "@navikt/aksel-icons": "^8.16.1",
+        "@navikt/arbeidsplassen-css": "^10.0.8",
+        "@navikt/arbeidsplassen-react": "^11.0.1",
+        "@navikt/arbeidsplassen-theme": "^10.0.6",
+        "@navikt/ds-css": "^8.16.1",
+        "@navikt/ds-react": "^8.16.1",
+        "next": "^16.3.0",
+        "prop-types": "^15.8.1",
+        "react": "^19.2.5",
+        "react-dom": "^19.2.5"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.5.7",
+        "@navikt/aksel-stylelint": "^8.15.0",
+        "@testing-library/jest-dom": "^6.9.1",
+        "@testing-library/react": "^16.3.2",
+        "@types/node": "^22.20.1",
+        "@types/react": "^19.2.14",
+        "@types/react-dom": "^19.2.3",
+        "@vitejs/plugin-react": "^4.2.1",
+        "husky": "^9.1.7",
+        "jsdom": "^27.0.1",
+        "lint-staged": "^15.5.2",
+        "stylelint": "^16.26.1",
+        "stylelint-config-recommended": "^14.0.1",
+        "typescript": "^5.9.3",
+        "vitest": "^3.2.7"
+    },
+    "lint-staged": {
+        "./*/**/*.{js,jsx,ts,tsx,json}": [
+            "pnpm biome check --write --no-errors-on-unmatched"
+        ],
+        "./*/**/*.css": [
+            "pnpm stylelint --fix"
+        ],
+        "*.md": [
+            "pnpm biome format --write --no-errors-on-unmatched"
+        ]
+    }
+}

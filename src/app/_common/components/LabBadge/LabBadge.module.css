@@ -1,0 +1,16 @@
+.badge {
+    width: 76px;
+    position: absolute;
+    transform: rotate(-14deg);
+    top: 30px;
+    height: auto;
+    left: 0px;
+    @media (min-width: 1024px) {
+        left: 33px;
+    }
+    @media (min-width: 768px) {
+        top: 35px;
+    }
+    @media (min-width: 480px) {
+    }
+}

@@ -1,0 +1,46 @@
+import { BodyLong, Heading, LinkCard, VStack } from "@navikt/ds-react";
+import { LinkCardAnchor, LinkCardDescription, LinkCardTitle } from "@navikt/ds-react/LinkCard";
+import { PageBlock } from "@navikt/ds-react/Page";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Prototyper",
+    description: "Oversikt over tilgjengelige prototyper",
+};
+
+export default function PrototyperPage() {
+    return (
+        <PageBlock width="2xl" gutters>
+            <VStack gap="space-24" paddingBlock="space-40 space-48">
+                <div>
+                    <Heading size="xlarge" level="1" spacing>
+                        Prototyper
+                    </Heading>
+                    <BodyLong>
+                        Her finner du prototyper og konsepter under utvikling. Hver prototype har sin egen URL og kan
+                        deles for tilbakemelding og brukertesting.
+                    </BodyLong>
+                </div>
+
+                <LinkCard>
+                    <LinkCardTitle>
+                        <LinkCardAnchor href="/prototyper/eksempel">Eksempelprototype</LinkCardAnchor>
+                    </LinkCardTitle>
+                    <LinkCardDescription>
+                        En enkel eksempelprototype som viser anbefalt struktur for nye konsepter.
+                    </LinkCardDescription>
+                </LinkCard>
+
+                <LinkCard>
+                    <LinkCardTitle>
+                        <LinkCardAnchor href="/prototyper/ny-annonse">Ny stillingsannonse</LinkCardAnchor>
+                    </LinkCardTitle>
+                    <LinkCardDescription>
+                        Prototype av stillingsregistrering med 5 steg: praktisk info, om stillingen, om bedriften,
+                        søknad og publisering.
+                    </LinkCardDescription>
+                </LinkCard>
+            </VStack>
+        </PageBlock>
+    );
+}
