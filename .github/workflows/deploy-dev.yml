@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     if: |
-      github.ref_name == 'master' ||
+      github.ref_name == 'main' ||
       contains(github.event.head_commit.message, 'deploy:dev') ||
       github.event_name == 'workflow_dispatch'
     permissions:

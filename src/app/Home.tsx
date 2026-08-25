@@ -52,9 +52,7 @@ export default function Home() {
                     </LinkCard>
                     <LinkCard>
                         <LinkCardTitle>
-                            <LinkCardAnchor href="/artikler/om-arbeidsplassen">
-                                Om arbeidsplassen.no
-                            </LinkCardAnchor>
+                            <LinkCardAnchor href="/artikler/om-arbeidsplassen">Om arbeidsplassen.no</LinkCardAnchor>
                         </LinkCardTitle>
                         <LinkCardDescription>
                             Arbeidsplassen.no samler alle ledige jobber på ett sted.
@@ -62,13 +60,9 @@ export default function Home() {
                     </LinkCard>
                     <LinkCard>
                         <LinkCardTitle>
-                            <LinkCardAnchor href="/ny-stilling">
-                                Lys ut en stilling
-                            </LinkCardAnchor>
+                            <LinkCardAnchor href="/ny-stilling">Lys ut en stilling</LinkCardAnchor>
                         </LinkCardTitle>
-                        <LinkCardDescription>
-                            Registrer en stillingsannonse enkelt og gratis.
-                        </LinkCardDescription>
+                        <LinkCardDescription>Registrer en stillingsannonse enkelt og gratis.</LinkCardDescription>
                     </LinkCard>
                 </HGrid>
             </PageBlock>

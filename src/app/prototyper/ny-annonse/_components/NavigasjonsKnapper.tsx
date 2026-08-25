@@ -39,7 +39,11 @@ export default function NavigasjonsKnapper({ currentStep, totalSteps, onPrevious
                     Forrige steg
                 </Button>
 
-                <Button variant="tertiary" icon={<EyeIcon aria-hidden="true" />} onClick={() => alert("Forhåndsvisning er ikke implementert i prototypen.")}>
+                <Button
+                    variant="tertiary"
+                    icon={<EyeIcon aria-hidden="true" />}
+                    onClick={() => alert("Forhåndsvisning er ikke implementert i prototypen.")}
+                >
                     Forhåndsvis annonsen
                 </Button>
 
@@ -48,11 +52,7 @@ export default function NavigasjonsKnapper({ currentStep, totalSteps, onPrevious
                         Publiser
                     </Button>
                 ) : (
-                    <Button
-                        variant="primary"
-                        onClick={onNext}
-                        icon={<ChevronRightCircleIcon aria-hidden="true" />}
-                    >
+                    <Button variant="primary" onClick={onNext} icon={<ChevronRightCircleIcon aria-hidden="true" />}>
                         Neste steg
                     </Button>
                 )}

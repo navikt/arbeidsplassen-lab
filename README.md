@@ -120,7 +120,7 @@ Eksempel-prompt:
 
 ## Deploy
 
-Deployes automatisk til dev-gcp ved merge til `master`.
+Deployes automatisk til dev-gcp ved merge til `main`.
 
 - Ingress: `https://arbeidsplassen-lab.intern.dev.nav.no`
 - Ingress: `https://arbeidsplassen-lab.ansatt.dev.nav.no`
@@ -131,7 +131,7 @@ Deployes automatisk til dev-gcp ved merge til `master`.
 - [ ] Gi `arbeidsplassen`-teamet tilgang i Nais
 - [ ] Verifiser at `NAIS_WORKLOAD_IDENTITY_PROVIDER` og `NAIS_MANAGEMENT_PROJECT_ID` er tilgjengelige som secrets/vars
 - [ ] Kjør `pnpm install` for å generere `pnpm-lock.yaml`
-- [ ] Push til `master` for å trigge første deploy
+- [ ] Push til `main` for å trigge første deploy
 
 ## Kvalitetssjekker
 

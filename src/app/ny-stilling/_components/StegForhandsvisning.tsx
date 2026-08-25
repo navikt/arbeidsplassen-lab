@@ -18,14 +18,14 @@ export default function StegForhandsvisning({ formData, onBack }: StegForhandsvi
                 Forhåndsvisning
             </Heading>
 
-            <LocalAlert status="info">
+            <LocalAlert status="announcement">
                 <LocalAlert.Header>
                     <LocalAlert.Title>Prototype</LocalAlert.Title>
                 </LocalAlert.Header>
                 <LocalAlert.Content>
                     <BodyLong>
-                        Dette er en forhåndsvisning av annonsen. I en virkelig løsning ville annonsen blitt publisert
-                        og synlig for jobbsøkere.
+                        Dette er en forhåndsvisning av annonsen. I en virkelig løsning ville annonsen blitt publisert og
+                        synlig for jobbsøkere.
                     </BodyLong>
                 </LocalAlert.Content>
             </LocalAlert>

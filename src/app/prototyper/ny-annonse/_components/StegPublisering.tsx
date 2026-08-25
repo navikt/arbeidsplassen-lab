@@ -1,13 +1,4 @@
-import {
-    Alert,
-    BodyLong,
-    BodyShort,
-    Checkbox,
-    Heading,
-    List,
-    TextField,
-    VStack,
-} from "@navikt/ds-react";
+import { Alert, BodyLong, BodyShort, Checkbox, Heading, List, TextField, VStack } from "@navikt/ds-react";
 import type { AnnonseFormData } from "./NyAnnonseFlyt";
 
 type Props = {
@@ -25,7 +16,7 @@ export default function StegPublisering({ formData, updateField }: Props) {
             <TextField
                 label="Publiseringsdato"
                 description="Velg fra hvilken dato annonsen skal vises."
-                type="date"
+                type="time"
                 value={formData.publiseringsdato}
                 onChange={(e) => updateField("publiseringsdato", e.target.value)}
             />
@@ -42,21 +33,14 @@ export default function StegPublisering({ formData, updateField }: Props) {
                 </List>
             </Alert>
 
-            <BodyLong>
-                Les mer om vilkårene for å publisere stillingsannonser på arbeidsplassen.no.
-            </BodyLong>
+            <BodyLong>Les mer om vilkårene for å publisere stillingsannonser på arbeidsplassen.no.</BodyLong>
 
-            <Checkbox
-                checked={formData.godtattVilkar}
-                onChange={(e) => updateField("godtattVilkar", e.target.checked)}
-            >
+            <Checkbox checked={formData.godtattVilkar} onChange={(e) => updateField("godtattVilkar", e.target.checked)}>
                 Jeg bekrefter at annonsen overholder gjeldende vilkår for publisering på arbeidsplassen.no
             </Checkbox>
 
             {!formData.godtattVilkar && (
-                <BodyShort textColor="subtle">
-                    Du må godta vilkårene før du kan publisere.
-                </BodyShort>
+                <BodyShort textColor="subtle">Du må godta vilkårene før du kan publisere.</BodyShort>
             )}
         </VStack>
     );

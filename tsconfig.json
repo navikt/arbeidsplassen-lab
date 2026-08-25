@@ -28,13 +28,6 @@
             "@images/*": ["./public/images/*"]
         }
     },
-    "include": [
-        "./src",
-        "**/*.ts",
-        "**/*.tsx",
-        "next-env.d.ts",
-        ".next/types/**/*.ts",
-        ".next/dev/types/**/*.ts"
-    ],
+    "include": ["./src", "**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
     "exclude": ["node_modules", ".next"]
 }

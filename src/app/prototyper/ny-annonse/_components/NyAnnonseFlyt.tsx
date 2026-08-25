@@ -122,7 +122,7 @@ export default function NyAnnonseFlyt() {
                     Ny stillingsannonse
                 </Heading>
 
-                <Navigasjonsbar currentStep={currentStep} totalSteps={TOTAL_STEPS} onStepChange={goToStep} />
+                <Navigasjonsbar currentStep={currentStep} totalSteps={TOTAL_STEPS} onStepChangeAction={goToStep} />
 
                 {currentStep === 1 && <StegPraktiskInformasjon formData={formData} updateField={updateField} />}
                 {currentStep === 2 && <StegOmStillingen formData={formData} updateField={updateField} />}

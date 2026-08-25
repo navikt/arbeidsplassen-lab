@@ -3,8 +3,8 @@ import {
     CheckboxGroup,
     Heading,
     HStack,
-    RadioGroup,
     Radio,
+    RadioGroup,
     Select,
     TextField,
     VStack,
@@ -52,14 +52,11 @@ export default function StegPraktiskInformasjon({ formData, updateField }: Props
                 <TextField
                     label="Oppstartsdato"
                     description="Må fylles inn"
-                    type="date"
+                    type="time"
                     value={formData.oppstartsdato}
                     onChange={(e) => updateField("oppstartsdato", e.target.value)}
                 />
-                <Checkbox
-                    checked={formData.etterAvtale}
-                    onChange={(e) => updateField("etterAvtale", e.target.checked)}
-                >
+                <Checkbox checked={formData.etterAvtale} onChange={(e) => updateField("etterAvtale", e.target.checked)}>
                     Etter avtale
                 </Checkbox>
             </HStack>

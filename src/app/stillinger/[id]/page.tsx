@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { mockStillinger } from "@/mock/stillinger";
 import StillingDetaljer from "./StillingDetaljer";
@@ -10,7 +11,7 @@ export async function generateStaticParams() {
     return mockStillinger.map((s) => ({ id: s.id }));
 }
 
-export async function generateMetadata(props: PageProps) {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
     const { id } = await props.params;
     const stilling = mockStillinger.find((s) => s.id === id);
     if (!stilling) {

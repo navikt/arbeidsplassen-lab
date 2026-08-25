@@ -40,7 +40,7 @@ export default function StillingDetaljer({ stilling }: StillingDetaljerProps) {
                         )}
                     </HStack>
 
-                    <HStack gap="space-8" paddingBlock="space-12 0">
+                    <HStack gap="space-8" paddingBlock="space-12 space-0">
                         {stilling.extent?.map((e) => (
                             <Tag key={e} size="small" variant="neutral-moderate">
                                 {e}
@@ -125,9 +125,7 @@ export default function StillingDetaljer({ stilling }: StillingDetaljerProps) {
                         Om annonsen
                     </Heading>
                     <VStack gap="space-4">
-                        <BodyShort>
-                            Publisert: {new Date(stilling.published).toLocaleDateString("nb-NO")}
-                        </BodyShort>
+                        <BodyShort>Publisert: {new Date(stilling.published).toLocaleDateString("nb-NO")}</BodyShort>
                         {stilling.source && <BodyShort>Kilde: {stilling.source}</BodyShort>}
                         <BodyShort>Annonse-ID: {stilling.id}</BodyShort>
                     </VStack>

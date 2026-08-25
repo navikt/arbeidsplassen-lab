@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { mockArtikler } from "@/mock/artikler";
 import ArtikkelContent from "./ArtikkelContent";
@@ -10,7 +11,7 @@ export async function generateStaticParams() {
     return mockArtikler.map((a) => ({ slug: a.slug }));
 }
 
-export async function generateMetadata(props: PageProps) {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
     const { slug } = await props.params;
     const artikkel = mockArtikler.find((a) => a.slug === slug);
     if (!artikkel) {

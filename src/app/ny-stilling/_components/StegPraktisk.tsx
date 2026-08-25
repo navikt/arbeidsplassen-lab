@@ -39,7 +39,7 @@ export default function StegPraktisk({ formData, updateField, onNext, onBack }: 
 
             <TextField
                 label="Søknadsfrist"
-                type="date"
+                type="time"
                 value={formData.soknadsfrist}
                 onChange={(e) => updateField("soknadsfrist", e.target.value)}
             />

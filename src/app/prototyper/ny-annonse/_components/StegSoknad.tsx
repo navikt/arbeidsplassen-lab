@@ -1,13 +1,4 @@
-import {
-    Alert,
-    BodyShort,
-    Checkbox,
-    CheckboxGroup,
-    Heading,
-    HStack,
-    TextField,
-    VStack,
-} from "@navikt/ds-react";
+import { Alert, BodyShort, Checkbox, CheckboxGroup, Heading, HStack, TextField, VStack } from "@navikt/ds-react";
 import type { AnnonseFormData } from "./NyAnnonseFlyt";
 
 type Props = {
@@ -69,7 +60,7 @@ export default function StegSoknad({ formData, updateField }: Props) {
 
             <VStack gap="space-8">
                 {formData.kvalifikasjoner.map((kvalifikasjon, i) => (
-                    <HStack key={`kval-${i}`} gap="space-8" align="end">
+                    <HStack key={`kval-${kvalifikasjon}`} gap="space-8" align="end">
                         <TextField
                             label={i === 0 ? "Kvalifikasjon" : undefined}
                             hideLabel={i > 0}
@@ -85,7 +76,14 @@ export default function StegSoknad({ formData, updateField }: Props) {
                 <BodyShort
                     as="button"
                     onClick={() => updateField("kvalifikasjoner", [...formData.kvalifikasjoner, ""])}
-                    style={{ background: "none", border: "none", cursor: "pointer", color: "var(--a-text-action)", textDecoration: "underline", padding: 0 }}
+                    style={{
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                        color: "var(--a-text-action)",
+                        textDecoration: "underline",
+                        padding: 0,
+                    }}
                 >
                     + Legg til kvalifikasjon
                 </BodyShort>
@@ -97,14 +95,11 @@ export default function StegSoknad({ formData, updateField }: Props) {
             <HStack gap="space-16" align="end">
                 <TextField
                     label="Søknadsfrist"
-                    type="date"
+                    type="time"
                     value={formData.soknadsfrist}
                     onChange={(e) => updateField("soknadsfrist", e.target.value)}
                 />
-                <Checkbox
-                    checked={formData.sokSnarest}
-                    onChange={(e) => updateField("sokSnarest", e.target.checked)}
-                >
+                <Checkbox checked={formData.sokSnarest} onChange={(e) => updateField("sokSnarest", e.target.checked)}>
                     Søk snarest mulig
                 </Checkbox>
             </HStack>

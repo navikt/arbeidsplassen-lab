@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { PageBlock } from "@navikt/ds-react/Page";
 import { Heading, Stepper, VStack } from "@navikt/ds-react";
+import { PageBlock } from "@navikt/ds-react/Page";
+import { useState } from "react";
+import StegForhandsvisning from "./StegForhandsvisning";
 import StegOmStillingen from "./StegOmStillingen";
 import StegPraktisk from "./StegPraktisk";
-import StegForhandsvisning from "./StegForhandsvisning";
 
 export type StillingFormData = {
     tittel: string;
@@ -59,9 +59,7 @@ export default function NyStillingFlyt() {
                         onBack={() => setActiveStep(1)}
                     />
                 )}
-                {activeStep === 3 && (
-                    <StegForhandsvisning formData={formData} onBack={() => setActiveStep(2)} />
-                )}
+                {activeStep === 3 && <StegForhandsvisning formData={formData} onBack={() => setActiveStep(2)} />}
             </VStack>
         </PageBlock>
     );
