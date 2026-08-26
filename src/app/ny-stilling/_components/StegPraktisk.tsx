@@ -1,4 +1,4 @@
-import { Button, Heading, HStack, Select, TextField, VStack } from "@navikt/ds-react";
+import { Button, DatePicker, Heading, HStack, Select, TextField, VStack, useDatepicker } from "@navikt/ds-react";
 import type { StillingFormData } from "./NyStillingFlyt";
 
 type StegPraktiskProps = {
@@ -8,7 +8,19 @@ type StegPraktiskProps = {
     onBack: () => void;
 };
 
+const formatDateValue = (date: Date) => {
+    const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
+    return localDate.toISOString().slice(0, 10);
+};
+
 export default function StegPraktisk({ formData, updateField, onNext, onBack }: StegPraktiskProps) {
+    const { datepickerProps, inputProps } = useDatepicker({
+        defaultSelected: formData.soknadsfrist ? new Date(formData.soknadsfrist) : undefined,
+        onDateChange: (date) => {
+            updateField("soknadsfrist", date ? formatDateValue(date) : "");
+        },
+    });
+
     return (
         <VStack gap="space-24">
             <Heading size="medium" level="2">
@@ -37,12 +49,9 @@ export default function StegPraktisk({ formData, updateField, onNext, onBack }: 
                 <option value="Engasjement">Engasjement</option>
             </Select>
 
-            <TextField
-                label="Søknadsfrist"
-                type="time"
-                value={formData.soknadsfrist}
-                onChange={(e) => updateField("soknadsfrist", e.target.value)}
-            />
+            <DatePicker {...datepickerProps}>
+                <DatePicker.Input {...inputProps} label="Søknadsfrist" />
+            </DatePicker>
 
             <HStack gap="space-16">
                 <Button variant="secondary" onClick={onBack}>

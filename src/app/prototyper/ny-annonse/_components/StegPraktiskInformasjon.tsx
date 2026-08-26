@@ -1,6 +1,7 @@
 import {
     Checkbox,
     CheckboxGroup,
+    DatePicker,
     Heading,
     HStack,
     Radio,
@@ -8,6 +9,7 @@ import {
     Select,
     TextField,
     VStack,
+    useDatepicker,
 } from "@navikt/ds-react";
 import type { AnnonseFormData } from "./NyAnnonseFlyt";
 
@@ -16,7 +18,19 @@ type Props = {
     updateField: <K extends keyof AnnonseFormData>(field: K, value: AnnonseFormData[K]) => void;
 };
 
+const formatDateValue = (date: Date) => {
+    const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
+    return localDate.toISOString().slice(0, 10);
+};
+
 export default function StegPraktiskInformasjon({ formData, updateField }: Props) {
+    const { datepickerProps, inputProps } = useDatepicker({
+        defaultSelected: formData.oppstartsdato ? new Date(formData.oppstartsdato) : undefined,
+        onDateChange: (date) => {
+            updateField("oppstartsdato", date ? formatDateValue(date) : "");
+        },
+    });
+
     return (
         <VStack gap="space-24">
             <Heading level="2" size="large">
@@ -49,13 +63,13 @@ export default function StegPraktiskInformasjon({ formData, updateField }: Props
                     onChange={(e) => updateField("antallStillinger", e.target.value)}
                     htmlSize={10}
                 />
-                <TextField
-                    label="Oppstartsdato"
-                    description="Må fylles inn"
-                    type="time"
-                    value={formData.oppstartsdato}
-                    onChange={(e) => updateField("oppstartsdato", e.target.value)}
-                />
+                <DatePicker {...datepickerProps}>
+                    <DatePicker.Input
+                        {...inputProps}
+                        label="Oppstartsdato"
+                        description="Må fylles inn"
+                    />
+                </DatePicker>
                 <Checkbox checked={formData.etterAvtale} onChange={(e) => updateField("etterAvtale", e.target.checked)}>
                     Etter avtale
                 </Checkbox>

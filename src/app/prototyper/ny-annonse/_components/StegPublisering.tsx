@@ -1,4 +1,14 @@
-import { Alert, BodyLong, BodyShort, Checkbox, Heading, List, TextField, VStack } from "@navikt/ds-react";
+import {
+    Alert,
+    BodyLong,
+    BodyShort,
+    Checkbox,
+    DatePicker,
+    Heading,
+    List,
+    useDatepicker,
+    VStack,
+} from "@navikt/ds-react";
 import type { AnnonseFormData } from "./NyAnnonseFlyt";
 
 type Props = {
@@ -6,20 +16,32 @@ type Props = {
     updateField: <K extends keyof AnnonseFormData>(field: K, value: AnnonseFormData[K]) => void;
 };
 
+const formatDateValue = (date: Date) => {
+    const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
+    return localDate.toISOString().slice(0, 10);
+};
+
 export default function StegPublisering({ formData, updateField }: Props) {
+    const { datepickerProps, inputProps } = useDatepicker({
+        defaultSelected: formData.publiseringsdato ? new Date(formData.publiseringsdato) : undefined,
+        onDateChange: (date) => {
+            updateField("publiseringsdato", date ? formatDateValue(date) : "");
+        },
+    });
+
     return (
         <VStack gap="space-24">
             <Heading level="2" size="large">
                 Publisering
             </Heading>
 
-            <TextField
-                label="Publiseringsdato"
-                description="Velg fra hvilken dato annonsen skal vises."
-                type="time"
-                value={formData.publiseringsdato}
-                onChange={(e) => updateField("publiseringsdato", e.target.value)}
-            />
+            <DatePicker {...datepickerProps}>
+                <DatePicker.Input
+                    {...inputProps}
+                    label="Publiseringsdato"
+                    description="Velg fra hvilken dato annonsen skal vises."
+                />
+            </DatePicker>
 
             <Alert variant="info">
                 <Heading level="3" size="small" spacing>

@@ -1,4 +1,15 @@
-import { Alert, BodyShort, Checkbox, CheckboxGroup, Heading, HStack, TextField, VStack } from "@navikt/ds-react";
+import {
+    Alert,
+    BodyShort,
+    Checkbox,
+    CheckboxGroup,
+    DatePicker,
+    Heading,
+    HStack,
+    TextField,
+    VStack,
+    useDatepicker,
+} from "@navikt/ds-react";
 import type { AnnonseFormData } from "./NyAnnonseFlyt";
 
 type Props = {
@@ -6,7 +17,19 @@ type Props = {
     updateField: <K extends keyof AnnonseFormData>(field: K, value: AnnonseFormData[K]) => void;
 };
 
+const formatDateValue = (date: Date) => {
+    const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
+    return localDate.toISOString().slice(0, 10);
+};
+
 export default function StegSoknad({ formData, updateField }: Props) {
+    const { datepickerProps, inputProps } = useDatepicker({
+        defaultSelected: formData.soknadsfrist ? new Date(formData.soknadsfrist) : undefined,
+        onDateChange: (date) => {
+            updateField("soknadsfrist", date ? formatDateValue(date) : "");
+        },
+    });
+
     return (
         <VStack gap="space-24">
             <Heading level="2" size="large">
@@ -93,12 +116,9 @@ export default function StegSoknad({ formData, updateField }: Props) {
                 Søknadsfrist
             </Heading>
             <HStack gap="space-16" align="end">
-                <TextField
-                    label="Søknadsfrist"
-                    type="time"
-                    value={formData.soknadsfrist}
-                    onChange={(e) => updateField("soknadsfrist", e.target.value)}
-                />
+                <DatePicker {...datepickerProps}>
+                    <DatePicker.Input {...inputProps} label="Søknadsfrist" />
+                </DatePicker>
                 <Checkbox checked={formData.sokSnarest} onChange={(e) => updateField("sokSnarest", e.target.checked)}>
                     Søk snarest mulig
                 </Checkbox>
