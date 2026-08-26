@@ -1,0 +1,9 @@
+set -e
+
+if [ "$CI" = "true" ]; then
+  echo "CI-miljø oppdaget, hopper over pre-push sjekker"
+  exit 0
+fi
+
+pnpm run -s compileTS
+pnpm run -s test
