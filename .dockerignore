@@ -1,7 +1,6 @@
 .git
 .github
 node_modules
-.next
 *.md
 docker-compose*.yml
 .env*
