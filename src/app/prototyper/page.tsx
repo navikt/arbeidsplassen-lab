@@ -40,6 +40,42 @@ export default function PrototyperPage() {
                         søknad og publisering.
                     </LinkCardDescription>
                 </LinkCard>
+
+                <LinkCard>
+                    <LinkCardTitle>
+                        <LinkCardAnchor href="/prototyper/stillingsregistrering-2">
+                            Stillingsregistrering 2.0
+                        </LinkCardAnchor>
+                    </LinkCardTitle>
+                    <LinkCardDescription>
+                        Ny arbeidsflate for stillingsregistrering med live forhåndsvisning, kontekstuelle tips,
+                        lønnsmodul og kvalifikasjoner med prioritering (må ha / bør ha).
+                    </LinkCardDescription>
+                </LinkCard>
+
+                <LinkCard>
+                    <LinkCardTitle>
+                        <LinkCardAnchor href="/prototyper/stillingsregistrering-3">
+                            Stillingsregistrering 3.0 — Guidet
+                        </LinkCardAnchor>
+                    </LinkCardTitle>
+                    <LinkCardDescription>
+                        Guidet stillingsregistrering med en assistent som leder arbeidsgiver gjennom prosessen
+                        steg-for-steg. Kort-basert layout med fremdriftsindikator og oppsummering med ExpansionCards.
+                    </LinkCardDescription>
+                </LinkCard>
+
+                <LinkCard>
+                    <LinkCardTitle>
+                        <LinkCardAnchor href="/prototyper/stillingsregistrering-4">
+                            Stillingsregistrering 4.0 — Annonseverkstedet
+                        </LinkCardAnchor>
+                    </LinkCardTitle>
+                    <LinkCardDescription>
+                        Adaptivt skriveverksted med rekrutteringsmål, kontekstuell skrivehjelp, tekststartere,
+                        søkerblikk og en forklarbar kvalitetssjekk.
+                    </LinkCardDescription>
+                </LinkCard>
             </VStack>
         </PageBlock>
     );

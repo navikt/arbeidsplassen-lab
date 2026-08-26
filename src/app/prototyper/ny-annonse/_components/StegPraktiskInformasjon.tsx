@@ -8,8 +8,8 @@ import {
     RadioGroup,
     Select,
     TextField,
-    VStack,
     useDatepicker,
+    VStack,
 } from "@navikt/ds-react";
 import type { AnnonseFormData } from "./NyAnnonseFlyt";
 
@@ -64,11 +64,7 @@ export default function StegPraktiskInformasjon({ formData, updateField }: Props
                     htmlSize={10}
                 />
                 <DatePicker {...datepickerProps}>
-                    <DatePicker.Input
-                        {...inputProps}
-                        label="Oppstartsdato"
-                        description="Må fylles inn"
-                    />
+                    <DatePicker.Input {...inputProps} label="Oppstartsdato" description="Må fylles inn" />
                 </DatePicker>
                 <Checkbox checked={formData.etterAvtale} onChange={(e) => updateField("etterAvtale", e.target.checked)}>
                     Etter avtale

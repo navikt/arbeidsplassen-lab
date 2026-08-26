@@ -1,0 +1,149 @@
+.arbeidsflate {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--a-spacing-6);
+}
+
+@media (min-width: 1024px) {
+    .arbeidsflate {
+        grid-template-columns: 1fr 400px;
+    }
+}
+
+.hovedinnhold {
+    display: flex;
+    flex-direction: column;
+    gap: var(--a-spacing-6);
+}
+
+.sidepanel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--a-spacing-4);
+}
+
+@media (min-width: 1024px) {
+    .sidepanel {
+        position: sticky;
+        top: var(--a-spacing-4);
+        max-height: calc(100vh - var(--a-spacing-8));
+        overflow-y: auto;
+    }
+}
+
+.forhandsvisningToggle {
+    display: block;
+}
+
+@media (min-width: 1024px) {
+    .forhandsvisningToggle {
+        display: none;
+    }
+}
+
+.sidepanelDesktop {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .sidepanelDesktop {
+        display: flex;
+        flex-direction: column;
+        gap: var(--a-spacing-4);
+    }
+}
+
+.seksjonHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--a-spacing-2);
+    padding: var(--a-spacing-4);
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--a-border-subtle);
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.seksjonHeader:hover {
+    background: var(--a-surface-hover);
+}
+
+.seksjonInnhold {
+    padding: var(--a-spacing-6) var(--a-spacing-4);
+}
+
+.statusIkon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.statusIkkeStartet {
+    border: 2px solid var(--a-border-subtle);
+    color: var(--a-text-subtle);
+}
+
+.statusPabegynt {
+    border: 2px solid var(--a-border-action);
+    background: var(--a-surface-action-subtle);
+    color: var(--a-text-action);
+}
+
+.statusFerdig {
+    background: var(--a-surface-success);
+    color: var(--a-text-on-inverted);
+}
+
+.forhandsvisningBoks {
+    border: 1px solid var(--a-border-subtle);
+    border-radius: var(--a-border-radius-medium);
+    padding: var(--a-spacing-6);
+    background: var(--a-surface-default);
+}
+
+.forhandsvisningLabel {
+    display: flex;
+    align-items: center;
+    gap: var(--a-spacing-2);
+    padding: var(--a-spacing-2) var(--a-spacing-3);
+    background: var(--a-surface-subtle);
+    border-radius: var(--a-border-radius-medium);
+    margin-bottom: var(--a-spacing-4);
+    font-size: var(--a-font-size-small);
+}
+
+.tipsKort {
+    border-left: 3px solid var(--a-border-info);
+    padding: var(--a-spacing-3) var(--a-spacing-4);
+    background: var(--a-surface-info-subtle);
+    border-radius: 0 var(--a-border-radius-medium) var(--a-border-radius-medium) 0;
+}
+
+.kvalifikasjonRad {
+    display: flex;
+    align-items: center;
+    gap: var(--a-spacing-2);
+}
+
+.kvalifikasjonFjern {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--a-text-danger);
+    padding: var(--a-spacing-1);
+    display: flex;
+    align-items: center;
+}
+
+.lonnFelter {
+    display: flex;
+    gap: var(--a-spacing-4);
+    align-items: end;
+}

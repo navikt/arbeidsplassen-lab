@@ -1,4 +1,4 @@
-import { Button, DatePicker, Heading, HStack, Select, TextField, VStack, useDatepicker } from "@navikt/ds-react";
+import { Button, DatePicker, Heading, HStack, Select, TextField, useDatepicker, VStack } from "@navikt/ds-react";
 import type { StillingFormData } from "./NyStillingFlyt";
 
 type StegPraktiskProps = {

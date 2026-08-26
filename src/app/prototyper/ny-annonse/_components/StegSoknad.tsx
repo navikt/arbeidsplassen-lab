@@ -7,8 +7,8 @@ import {
     Heading,
     HStack,
     TextField,
-    VStack,
     useDatepicker,
+    VStack,
 } from "@navikt/ds-react";
 import type { AnnonseFormData } from "./NyAnnonseFlyt";
 
