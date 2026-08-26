@@ -125,6 +125,19 @@ Deployes automatisk til dev-gcp ved merge til `main`.
 - Ingress: `https://arbeidsplassen-lab.intern.dev.nav.no`
 - Ingress: `https://arbeidsplassen-lab.ansatt.dev.nav.no`
 
+### Ekstern tilgang for brukertesting
+
+For å eksponere prototypen eksternt i en begrenset periode:
+
+1. Gå til **Actions** → **Deploy with external ingress** → **Run workflow**
+2. Velg `enable_external: true` → kjør
+3. Prototypen er nå tilgjengelig på `https://arbeidsplassen-lab.ekstern.dev.nav.no`
+4. Del URL-en med testdeltakere
+
+**Kun `/brukertest/*` er tilgjengelig eksternt.** Middleware blokkerer all annen navigasjon på den eksterne ingressen. Legg brukertester under `src/app/brukertest/<test-navn>/`.
+
+**Etter brukertesten:** Kjør den vanlige deploy-workflowen (push til `main`) eller trigger «Deploy with external ingress» med `enable_external: false`. Da deployes kun med interne ingresser igjen.
+
 ## Før første deploy
 
 - [ ] Opprett repoet på GitHub under `navikt`
