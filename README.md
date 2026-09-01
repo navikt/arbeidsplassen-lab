@@ -1,163 +1,159 @@
 # Arbeidsplassen Lab
 
-Prototype-playground for [arbeidsplassen.no](https://arbeidsplassen.no). Brukes til raske konsepter, brukertesting og designutforskning.
+Gjør ideer for [arbeidsplassen.no](https://arbeidsplassen.no) om til interaktive,
+produksjonsnære frontendprototyper.
 
-> ⚠️ **Prototype** — dette er ikke en produksjonsapplikasjon. Ingen backend, ingen autentisering, ingen ekte data.
+> **Prototype:** Applikasjonen har ingen backend, ekte autentisering eller
+> produksjonsdata. Alt skjer lokalt i nettleseren.
 
-## Kjør lokalt
+## Innhold
+
+- [Kom i gang](#kom-i-gang)
+- [Velg arbeidsflyt](#velg-arbeidsflyt)
+- [Sider og flyter](#sider-og-flyter)
+- [Prosjektstruktur](#prosjektstruktur)
+- [Mockdata og interaksjon](#mockdata-og-interaksjon)
+- [Fra idé til produksjonskode](#fra-idé-til-produksjonskode)
+- [Kvalitetssjekker](#kvalitetssjekker)
+- [Teknologi](#teknologi)
+- [Forvaltning](#forvaltning)
+- [Deploy og brukertesting](#deploy-og-brukertesting)
+
+## Kom i gang
+
+**Forutsetninger:** Git, Node-versjonen i `.nvmrc` og Corepack.
 
 ```bash
-pnpm install
+git clone https://github.com/navikt/arbeidsplassen-lab.git
+cd arbeidsplassen-lab
+nvm install
+nvm use
+corepack enable
+pnpm install --frozen-lockfile
 pnpm dev
 ```
 
 Åpne [http://localhost:3006](http://localhost:3006).
 
-## Sider
+Hvis installasjonen gir `401` fra `npm.pkg.github.com`, må lokal tilgang til
+GitHub Packages for `@navikt` være satt opp. Ikke legg token eller `.npmrc` i
+repoet.
 
-| Rute | Beskrivelse |
-|------|-------------|
-| `/` | Forside for jobbsøkere med snarveier, artikler og inngang til prototypene |
-| `/bedrift` | Inngangsside for bedrifter og stillingsregistrering |
+## Velg arbeidsflyt
+
+| Jeg skal | Start her |
+|----------|------------|
+| Utforske eller justere UI i Figma Make | [Figma Make med kodebasen](docs/figma-make.md) og `Guidelines.md` |
+| Lage kode med GitHub Copilot eller en annen agent | `AGENTS.md` |
+| Lage eller justere en prototype manuelt | Denne README-en og relevant feature under `src/app/` |
+| Sammenligne med dagens løsning | Skjermbildene i `docs/` og relevant produksjonsrepo |
+
+Bruk eksisterende rute når oppgaven gjelder en normal flyt eller en konkret
+URL. Legg et nytt, isolert alternativ under
+`src/app/prototyper/<prototype-navn>/`. Bruk `src/app/brukertest/` bare når
+konseptet uttrykkelig skal eksponeres for ekstern brukertesting.
+
+## Sider og flyter
+
+| Rute | Innhold |
+|------|---------|
+| `/` | Forside for jobbsøkere og inngang til Lab-konsepter |
+| `/bedrift` | Inngangsside for bedrifter |
 | `/ung` | Jobber og råd for unge jobbsøkere |
-| `/stillinger` | Interaktivt stillingssøk med filtre og lokale mockannonser |
-| `/stillinger/favoritter` | Favoritter som lagres lokalt i nettleseren |
-| `/stillinger/lagrede-sok` | Navngitte søk som lagres lokalt i nettleseren |
-| `/stillinger/stilling/[id]` | Stillingsannonse med ekstern lenke, e-post eller superrask søknad |
-| `/stillinger/stilling/[id]/superrask-soknad` | Simulert søknadsskjema uten lagring eller innsending |
-| `/artikler/[slug]` | Artikkelside |
-| `/ny-stilling` | Forenklet stillingsregistrering (3 steg) |
+| `/stillinger` | Interaktivt stillingssøk med filtre og lokale annonser |
+| `/stillinger/favoritter` | Favoritter lagret lokalt i nettleseren |
+| `/stillinger/lagrede-sok` | Navngitte søk lagret lokalt i nettleseren |
+| `/stillinger/stilling/[id]` | Stillingsannonse og ulike søknadsformer |
+| `/artikler/[slug]` | Lokale artikler |
 | `/stillingsregistrering` | Simulert innlogging og Min bedriftsside |
-| `/stillingsregistrering/stillingsannonser` | Lokalt lagrede stillingsannonser med søk, filter og handlinger |
-| `/stillingsregistrering/rediger/[id]/steg/[steg]` | Produksjonslik stillingsregistrering med 5 steg |
-| `/stillingsregistrering/forhandsvis/[id]` | Lokal forhåndsvisning av en stillingsannonse |
-| `/prototyper` | Oversikt over prototyper |
-| `/prototyper/eksempel` | Eksempelprototype |
-| `/prototyper/ny-annonse` | Videresender til den produksjonslike stillingsregistreringen |
+| `/stillingsregistrering/stillingsannonser` | Arbeidsgivers lokale annonseoversikt |
+| `/stillingsregistrering/rediger/[id]/steg/[steg]` | Produksjonslik stillingsregistrering i fem steg |
+| `/prototyper` | Isolerte konsepter og alternative flyter |
+| `/brukertest/*` | Sider som kan åpnes på den eksterne testinngangen |
 
----
+## Prosjektstruktur
 
-## Lag en ny prototype
+| Sti | Ansvar |
+|-----|--------|
+| `src/app/layout.tsx` | Felles appskall med header, footer, banner og `main` |
+| `src/app/_common/` | Komponenter som faktisk deles av flere flyter |
+| `src/app/<flyt>/` | Produksjonsnære normale sider og flyter |
+| `src/app/prototyper/` | Nye eller alternative konsepter |
+| `src/app/brukertest/` | Avgrensede sider for ekstern brukertesting |
+| `src/mock/` | Mockdata som deles på tvers av flere sider |
+| `docs/` | Skjermbilder og arbeidsflyter som brukes som referanse |
+| `.figma/make/` | Oppsett som installerer og starter appen i Figma Make |
 
-Prototyper følger en **feature by package**-struktur. Alt som hører til en
-prototype — komponenter, mockdata, typer og stiler — ligger samlet i én mappe.
-Dette gjør det enkelt å løfte kode over til et produksjonsrepo når et konsept
-skal realiseres.
+En feature samler normalt egne komponenter, typer, mockdata, tilstand og stiler i
+private mapper som `_components/`, `_lib/`, `_mock/` og `_state/`. Se
+`AGENTS.md` for de detaljerte kodereglene og
+`/prototyper/eksempel` for et minimumseksempel.
 
-### Mappestruktur
+## Mockdata og interaksjon
 
-```text
-src/app/prototyper/<prototype-navn>/
-├── page.tsx              # Next.js route — metadata + rendrer hovedkomponent
-├── _components/          # UI-komponenter (én per fil)
-│   ├── Hovedflyt.tsx     # Orkestrator ("use client")
-│   └── Delkomponent.tsx  # Fokusert komponent med tydelig ansvar
-├── _mock/                # Mockdata for prototypen (valgfritt)
-│   └── data.ts
-└── _lib/                 # Typer og hjelpefunksjoner (valgfritt)
-    └── types.ts
-```
+- Kort visningstekst kan hardkodes i komponenten.
+- Poster og lister legges i feature-mappens `_mock/`; delte data legges i `src/mock/`.
+- Bruk lokal React-state. Bruk `localStorage` når valg skal overleve oppfriskning.
+- Simuler API-svar, innlogging og innsending. Ikke gjør nettverkskall.
+- Bruk aldri ekte personer, bedrifter, kontaktinformasjon eller produksjonsdata.
+- Ringenes herre-inspirerte fantasynavn og tekst kan brukes i synlig mockinnhold.
+  Koden skal fortsatt ha nøytrale, domenebeskrivende navn.
+- Behold fagbegreper, feltetiketter og handlingsnavn realistiske når teksten
+  ikke er en del av konseptet som testes.
+- Bruk `example.invalid` og tydelig ugyldige telefonnumre i kontaktdata.
 
-### Steg for steg
+## Fra idé til produksjonskode
 
-1. Opprett en mappe under `src/app/prototyper/`, f.eks. `nytt-stillingssok/`.
-2. Legg til en `page.tsx` med metadata.
-3. Plasser komponenter i `_components/` — én komponent per fil.
-4. Bruk eksisterende Aksel-komponenter og applikasjonsskallet (header/footer).
-5. Legg til en lenke fra `src/app/prototyper/page.tsx`.
-6. Prototypen er automatisk tilgjengelig på `/prototyper/nytt-stillingssok`.
+1. Beskriv hypotesen og hvilken eksisterende flyt konseptet bygger på.
+2. Avgrens rutene og tilstandene som må være interaktive.
+3. Gjenbruk appskallet, Lab-komponenter og Aksel før du lager nytt.
+4. Hold data og handlinger eksplisitte slik at komponentene kan flyttes.
+5. Kontroller mobil, desktop og tastaturnavigasjon.
+6. Opprett en pull request med endrede URL-er, designavvik og filene som skal
+   tas videre.
 
-### Retningslinjer
-
-- Bruk lokale mockdata og `useState` — ingen nettverkskall.
-- Gjenbruk eksisterende komponenter før du lager nye.
-- Ikke endre andre prototyper eller globale stiler uten avtale.
-- Sørg for responsivitet og tastaturnavigasjon.
-- Se `src/app/prototyper/eksempel/` som referanseeksempel.
-
----
-
-## For designere (Figma Make)
-
-Figma Make lar deg bruke AI til å endre kode direkte fra Figma, uten å skrive
-kode selv. Se [docs/figma-make.md](docs/figma-make.md) for detaljert oppsett.
-
-**Rask start:**
-
-1. Klon repoet: `git clone git@github.com:navikt/arbeidsplassen-lab.git`
-2. Installer: `pnpm install`
-3. Start: `pnpm dev` → [localhost:3006](http://localhost:3006)
-4. Koble Figma Make til prosjektmappen
-5. Opprett en branch: `git checkout -b design/mitt-konsept`
-6. Gjør endringer via AI i Figma — live preview oppdateres automatisk
-7. Push og opprett en PR som utviklere kan gjennomgå
-
-**Tips:**
-- Start med å endre eksisterende sider eller kopiere en prototype.
-- Nye konsepter legges under `src/app/prototyper/<navn>/`.
-- Figma Make leser `Guidelines.md` for prosjektregler.
-
----
-
-## For utviklere (Copilot / manuelt)
-
-### Med GitHub Copilot
-
-Copilot leser instruksjonene i `AGENTS.md` og `.github/instructions/` automatisk.
-Gi en kort beskrivelse av hva du vil lage, så følger Copilot prosjektets
-konvensjoner for struktur, Aksel-bruk og mockdata.
-
-Eksempel-prompt:
-> «Lag en prototype av et nytt filterpanel for stillingssøk med chips og
-> fasetterte filtre. Legg den under /prototyper/nytt-filterpanel.»
-
-### Manuelt
-
-1. Opprett mappen `src/app/prototyper/<navn>/`.
-2. Følg mappestrukturen beskrevet over.
-3. Kjør `pnpm dev` for live preview.
-4. Kjør `pnpm lint && pnpm compileTS` før du pusher.
-
----
-
-## Tech stack
-
-- **Next.js 16** (App Router)
-- **Aksel Design System** (`@navikt/ds-react`, `@navikt/arbeidsplassen-react`)
-- **TypeScript**, **pnpm**, **Biome**, **Vitest**
-- **Node 24**
-
-## Deploy
-
-Deployes automatisk til dev-gcp ved merge til `main`.
-
-- Ingress: `https://arbeidsplassen-lab.intern.dev.nav.no`
-- Ingress: `https://arbeidsplassen-lab.ansatt.dev.nav.no`
-
-### Ekstern tilgang for brukertesting
-
-For å eksponere prototypen eksternt i en begrenset periode:
-
-1. Gå til **Actions** → **Deploy with external ingress** → **Run workflow**
-2. Velg `enable_external: true` → kjør
-3. Prototypen er nå tilgjengelig på `https://arbeidsplassen-lab.ekstern.dev.nav.no`
-4. Del URL-en med testdeltakere
-
-**Kun `/brukertest/*` er tilgjengelig eksternt.** Middleware blokkerer all annen navigasjon på den eksterne ingressen. Legg brukertester under `src/app/brukertest/<test-navn>/`.
-
-**Etter brukertesten:** Kjør den vanlige deploy-workflowen (push til `main`) eller trigger «Deploy with external ingress» med `enable_external: false`. Da deployes kun med interne ingresser igjen.
-
-## Før første deploy
-
-- [ ] Opprett repoet på GitHub under `navikt`
-- [ ] Gi `arbeidsplassen`-teamet tilgang i Nais
-- [ ] Verifiser at `NAIS_WORKLOAD_IDENTITY_PROVIDER` og `NAIS_MANAGEMENT_PROJECT_ID` er tilgjengelige som secrets/vars
-- [ ] Kjør `pnpm install` for å generere `pnpm-lock.yaml`
-- [ ] Push til `main` for å trigge første deploy
+Prototypen er et beslutningsgrunnlag, ikke produksjonskode i seg selv. Ved
+overføring må teamet koble på produksjonsdata, autentisering, logging,
+feilhåndtering og sikkerhet i det virkelige repoet.
 
 ## Kvalitetssjekker
 
-CI kjører automatisk på alle branches og PRer:
-- **Lint**: `pnpm lint` (Biome)
-- **Typecheck**: `pnpm compileTS`
-- **Test**: `pnpm test`
+```bash
+pnpm lint
+pnpm exec stylelint 'src/**/*.css'
+pnpm compileTS
+pnpm test
+pnpm build
+```
+
+CI kjører lint, typesjekk og tester på branches og pull requests.
+
+## Teknologi
+
+- Next.js 16 med App Router og React 19
+- TypeScript og pnpm
+- Aksel og Arbeidsplassen-komponentene fra `@navikt`
+- Biome, Stylelint og Vitest
+
+## Forvaltning
+
+Team arbeidsplassen forvalter repoet. Bruk en pull request for endringer som
+skal deles, og la en frontendutvikler gjennomgå kode som er laget i Figma Make
+eller av en kodeagent.
+
+## Deploy og brukertesting
+
+Merge til `main` deployer automatisk til:
+
+- `https://arbeidsplassen-lab.intern.dev.nav.no`
+- `https://arbeidsplassen-lab.ansatt.dev.nav.no`
+
+For en tidsavgrenset ekstern brukertest:
+
+1. Legg testen under `src/app/brukertest/<test-navn>/`.
+2. Kjør **Deploy with external ingress** i GitHub Actions med
+   `enable_external: true`.
+3. Del en URL under `https://arbeidsplassen-lab.ekstern.dev.nav.no/brukertest/`.
+4. Kjør workflowen på nytt med `enable_external: false` etter testen.
+
+Middleware blokkerer alle andre ruter på den eksterne ingressen.

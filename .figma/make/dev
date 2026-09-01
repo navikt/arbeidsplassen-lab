@@ -1,0 +1,4 @@
+#!/bin/bash
+set -euo pipefail
+
+exec corepack pnpm exec next dev --port "${PORT:-3006}"

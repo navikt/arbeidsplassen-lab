@@ -1,0 +1,24 @@
+#!/bin/bash
+set -euo pipefail
+
+REQUIRED_NODE_MAJOR=24
+
+if ! command -v node >/dev/null 2>&1; then
+    echo "Node.js mangler. Installer Node 24 og start Figma Make på nytt."
+    exit 1
+fi
+
+ACTUAL_NODE_MAJOR="$(node -p 'process.versions.node.split(".")[0]')"
+if [[ "$ACTUAL_NODE_MAJOR" != "$REQUIRED_NODE_MAJOR" ]]; then
+    echo "Arbeidsplassen Lab krever Node 24, men fant Node $(node --version)."
+    echo "Kjør 'nvm install && nvm use' i prosjektmappen og start Figma Make på nytt."
+    exit 1
+fi
+
+if ! command -v corepack >/dev/null 2>&1; then
+    echo "Corepack mangler. Installer Corepack for Node 24 og start Figma Make på nytt."
+    exit 1
+fi
+
+corepack pnpm --version
+echo "Node og pnpm er klare."

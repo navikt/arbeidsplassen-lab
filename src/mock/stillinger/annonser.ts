@@ -1,5 +1,6 @@
 import type { ApplicationChannel, Stilling } from "@/app/stillinger/_lib/types";
-import { generellSuperraskSoknad, lavvoSuperraskSoknad } from "./superraskSoknad";
+import { fictionalContactNames, fictionalEmployerNames } from "./mockIdentities";
+import { generellSuperraskSoknad, gronneDragenSuperraskSoknad } from "./superraskSoknad";
 
 export const MOCK_TODAY = "2026-08-31";
 
@@ -8,20 +9,20 @@ const externalStilling: Stilling = {
     title: "Vil du forme retningen for data hos oss?",
     jobTitle: "Staff Engineer",
     employer: {
-        name: "Bane Nord SF",
+        name: fictionalEmployerNames.mithrilRail,
         sector: "Offentlig",
         description: [
-            "Bane Nord lager digitale tjenester som gjør reisen enklere og mer forutsigbar.",
+            `${fictionalEmployerNames.mithrilRail} lager digitale tjenester som gjør reisen enklere og mer forutsigbar.`,
             "Vi jobber tverrfaglig og deler kunnskap på tvers av fagmiljøene våre.",
         ],
-        website: "https://example.invalid/bane-nord",
+        website: "https://mithrilbanen.example.invalid",
     },
     location: { city: "Oslo", county: "Oslo" },
     sections: [
         {
             heading: "Om oss",
             paragraphs: [
-                "Jernbanen i Norge genererer enorme mengder data hver dag. I Bane Nord jobber vi med å bruke disse dataene til å drive jernbanen bedre og mer effektivt.",
+                `Jernbanen i Norge genererer enorme mengder data hver dag. I ${fictionalEmployerNames.mithrilRail} jobber vi med å bruke disse dataene til å drive jernbanen bedre og mer effektivt.`,
                 "I rollen får du ansvar for å utvikle og forvalte målbildet for data. Du blir en viktig brobygger mellom data og teknologi.",
             ],
         },
@@ -29,7 +30,7 @@ const externalStilling: Stilling = {
             heading: "Hvorfor jobbe med data hos oss?",
             paragraphs: ["Data spiller en stadig viktigere rolle i hvordan vi utvikler og driver jernbanen."],
             items: [
-                "Påvirke hvordan Bane Nord skal jobbe med data fremover",
+                `Påvirke hvordan ${fictionalEmployerNames.mithrilRail} skal jobbe med data fremover`,
                 "Jobbe tett med sterke fagmiljøer innen data, arkitektur, analyse og utvikling",
                 "Se sammenhenger på tvers av en stor og kompleks teknologiorganisasjon",
                 "Bidra til at gode faglige valg blir til en felles retning",
@@ -74,14 +75,14 @@ const externalStilling: Stilling = {
     under18: false,
     contactList: [
         {
-            name: "Ola Eksempel",
+            name: fictionalContactNames.balin,
             title: "Seksjonsleder",
             phone: "00000000",
-            email: "kontakt@bane-nord.example.invalid",
+            email: "balin@mithrilbanen.example.invalid",
         },
     ],
     source: "Stillingsregistrering",
-    reference: "BANE-NORD-DATA-2026",
+    reference: "MITHRILBANEN-DATA-2026",
     status: "ACTIVE",
     application: {
         type: "external",
@@ -95,22 +96,22 @@ const emailStilling: Stilling = {
     title: "Er du vår nye salgsreporter i Oslo?",
     jobTitle: "Selger B2B",
     employer: {
-        name: "Raven Media AS",
+        name: fictionalEmployerNames.palantirMedia,
         sector: "Privat",
         description: [
-            "Raven Media er et uavhengig medieselskap med et engasjert fagmiljø.",
+            `${fictionalEmployerNames.palantirMedia} er et uavhengig medieselskap med et engasjert fagmiljø.`,
             "Vi kombinerer redaksjonell forståelse med kommersiell teft.",
         ],
-        website: "https://example.invalid/raven-media",
-        linkedin: "https://example.invalid/raven-media/linkedin",
-        facebook: "https://example.invalid/raven-media/facebook",
+        website: "https://palantir-media.example.invalid",
+        linkedin: "https://palantir-media.example.invalid/linkedin",
+        facebook: "https://palantir-media.example.invalid/facebook",
     },
     location: { city: "Oslo", county: "Oslo" },
     shortSummary: "Vi søker en spennende vekstbedrift og utfordrer innen B2B-kommunikasjon og formidling.",
     sections: [
         {
             paragraphs: [
-                "Vi i Raven Media AS ser på oss selv som en spennende vekstbedrift og en utfordrer innen B2B-kommunikasjon og formidling.",
+                `Vi i ${fictionalEmployerNames.palantirMedia} ser på oss selv som en spennende vekstbedrift og en utfordrer innen B2B-kommunikasjon og formidling.`,
                 "I denne rollen skal du gjennomføre undersøkelser om lokalt næringsliv, avtale møter med spennende bedrifter og tilby synlighet i våre publikasjoner.",
                 "Du vil være bindeledd mellom lokale næringsliv, avtalte møter med spennende bedrifter og tilby synlighet i våre publikasjoner.",
             ],
@@ -151,34 +152,34 @@ const emailStilling: Stilling = {
     under18: false,
     contactList: [
         {
-            name: "Henrik Eksempel",
+            name: fictionalContactNames.peregrin,
             title: "Salgssjef",
             phone: "00000000",
-            email: "kontakt@raven-media.example.invalid",
+            email: "peregrin@palantir-media.example.invalid",
         },
     ],
     source: "Stillingsregistrering",
-    reference: "RAVEN-SALG-2026",
+    reference: "PALANTIR-SALG-2026",
     status: "ACTIVE",
     application: {
         type: "email",
-        email: "soknad@raven-media.example.invalid",
+        email: "soknad@palantir-media.example.invalid",
     },
     similarIds: ["sales-partner-oslo", "account-manager-vestland", "kundekonsulent-bodo"],
 };
 
 const superraskStilling: Stilling = {
     id: "lavvo-kafemedarbeider",
-    title: "🔥 KREATIV SJEL SØKES – VIL DU SETTE DITT PREG PÅ HOS MAGNUS?",
+    title: "🔥 KREATIV SJEL SØKES – VIL DU SETTE DITT PREG PÅ DEN GRØNNE DRAGEN?",
     jobTitle: "Kafemedarbeider",
     employer: {
-        name: "Lavvo AS",
+        name: fictionalEmployerNames.greenDragon,
         sector: "Privat",
         description: [
-            "Hos Magnus er et kafékonsept på Banaksenteret i Lakselv. Her kombinerer vi lokal mat og drikke med kultur, gjenbruk og fellesskap.",
+            `${fictionalEmployerNames.greenDragon} er et kafékonsept i Lakselv. Her kombinerer vi lokal mat og drikke med kultur, gjenbruk og fellesskap.`,
             "Vi ønsker å være et naturlig møtested for både lokale og besøkende.",
         ],
-        facebook: "https://example.invalid/hos-magnus/facebook",
+        facebook: "https://gronne-dragen.example.invalid/facebook",
     },
     location: {
         address: "Torgveien 3",
@@ -186,12 +187,12 @@ const superraskStilling: Stilling = {
         county: "Finnmark",
     },
     shortSummary:
-        "Hos Magnus er i vekst og vi søker en kreativ og engasjert person til 100 % stilling som har lyst til å være med på å utvikle konseptet videre.",
+        "Den Grønne Dragen er i vekst og søker en kreativ og engasjert person som vil være med på å utvikle konseptet videre.",
     sections: [
         {
             heading: "Hva vi ser etter",
             items: [
-                "Du bryr deg om resultatet, maten som går ut døra, kunden som sitter ved bordet og hvordan Hos Magnus fremstår",
+                "Du bryr deg om resultatet, maten som går ut døra, kunden som sitter ved bordet og hvordan Den Grønne Dragen fremstår",
                 "Du har lyst til å utvikle og utforme en kafé, prøve ut egne ideer og skape noe du kan være stolt av",
             ],
         },
@@ -229,19 +230,19 @@ const superraskStilling: Stilling = {
     under18: false,
     contactList: [
         {
-            name: "Magnus Eksempel",
+            name: fictionalContactNames.samwise,
             title: "Daglig leder",
             phone: "00000000",
-            email: "kontakt@lavvo.example.invalid",
+            email: "samvis@gronne-dragen.example.invalid",
         },
     ],
     source: "Stillingsregistrering",
-    reference: "LAVVO-KAFE-2026",
+    reference: "GRONNE-DRAGEN-KAFE-2026",
     status: "ACTIVE",
     application: {
         type: "superrask",
-        alternativeEmail: "soknad@lavvo.example.invalid",
-        form: lavvoSuperraskSoknad,
+        alternativeEmail: "soknad@gronne-dragen.example.invalid",
+        form: gronneDragenSuperraskSoknad,
     },
     similarIds: ["kiwi-kafe-lakselv", "restaurantmedarbeider-oslo", "sommerjobb-kafe-tromso"],
 };
@@ -273,7 +274,7 @@ const compactSeeds: CompactSeed[] = [
         id: "sales-partner-oslo",
         title: "Bli vår nye salgspartner i Oslo",
         jobTitle: "Selger B2B",
-        employer: "Raven Media AS",
+        employer: fictionalEmployerNames.palantirMedia,
         city: "Oslo",
         county: "Oslo",
         occupation: "Salg og service",
@@ -282,7 +283,7 @@ const compactSeeds: CompactSeed[] = [
         id: "sales-reporter-trondheim",
         title: "Er du vår nye salgsreporter i Trondheimsregionen?",
         jobTitle: "Selger B2B",
-        employer: "Raven Media AS",
+        employer: fictionalEmployerNames.palantirMedia,
         city: "Trondheim",
         county: "Trøndelag",
         occupation: "Salg og service",
@@ -291,7 +292,7 @@ const compactSeeds: CompactSeed[] = [
         id: "sales-reporter-romerike",
         title: "Er du vår nye salgsreporter i Romerike?",
         jobTitle: "Selger B2B",
-        employer: "Raven Media AS",
+        employer: fictionalEmployerNames.palantirMedia,
         city: "Lillestrøm",
         county: "Akershus",
         occupation: "Salg og service",
@@ -300,7 +301,7 @@ const compactSeeds: CompactSeed[] = [
         id: "restaurantmedarbeider-oslo",
         title: "Burgerkjede søker restaurantmedarbeidere",
         jobTitle: "Restaurantmedarbeider",
-        employer: "Burgerhuset AS",
+        employer: fictionalEmployerNames.secondBreakfast,
         city: "Oslo",
         county: "Oslo",
         occupation: "Restaurant og mat",
@@ -311,7 +312,7 @@ const compactSeeds: CompactSeed[] = [
         id: "butikkmedarbeider-bodo",
         title: "Vil du forme retningen for data hos oss?",
         jobTitle: "Butikkmedarbeider",
-        employer: "Bodø Handel AS",
+        employer: fictionalEmployerNames.ereborTrade,
         city: "Bodø",
         county: "Nordland",
         occupation: "Butikk og handel",
@@ -319,9 +320,9 @@ const compactSeeds: CompactSeed[] = [
     },
     {
         id: "it-konsulent-trondheim",
-        title: "HKS søker IT-konsulent og rådgiver",
+        title: "Imladris søker IT-konsulent og rådgiver",
         jobTitle: "IT-konsulent",
-        employer: "HKS Husholding AS",
+        employer: fictionalEmployerNames.imladrisConsulting,
         city: "Trondheim",
         county: "Trøndelag",
         occupation: "IT",
@@ -332,7 +333,7 @@ const compactSeeds: CompactSeed[] = [
         id: "lager-aalesund",
         title: "Rapporter eller klikke og driftskyer søkes i Ålesund",
         jobTitle: "Lagerarbeider",
-        employer: "Repaiable Operations AS",
+        employer: fictionalEmployerNames.moriaWarehouse,
         city: "Ålesund",
         county: "Møre og Romsdal",
         occupation: "Transport og lager",
@@ -340,9 +341,9 @@ const compactSeeds: CompactSeed[] = [
     },
     {
         id: "kiwi-kafe-lakselv",
-        title: "Hos Magnus søker matglad menneske med glimt i øyet",
+        title: "Den Grønne Dragen søker et matglad menneske med glimt i øyet",
         jobTitle: "Kafemedarbeider",
-        employer: "Lavvo AS",
+        employer: fictionalEmployerNames.greenDragon,
         city: "Lakselv",
         county: "Finnmark",
         occupation: "Restaurant og mat",
@@ -354,7 +355,7 @@ const compactSeeds: CompactSeed[] = [
         id: "servicearbeider-stemnestod",
         title: "Lager- og servicemedarbeider – fleksibel rolle",
         jobTitle: "Servicemedarbeider",
-        employer: "Jamt AS",
+        employer: fictionalEmployerNames.gondorLogistics,
         city: "Stemnestad",
         county: "Rogaland",
         occupation: "Transport og lager",
@@ -363,7 +364,7 @@ const compactSeeds: CompactSeed[] = [
         id: "renholder-vikariat",
         title: "Søker renholder i fast stilling",
         jobTitle: "Renholder",
-        employer: "Velkommen AS",
+        employer: fictionalEmployerNames.lothlorienCleaning,
         city: "Vinje",
         county: "Telemark",
         occupation: "Renhold",
@@ -373,7 +374,7 @@ const compactSeeds: CompactSeed[] = [
         id: "selger-kongsvinger",
         title: "Selger i en spennende vekstbedrift",
         jobTitle: "Selger",
-        employer: "Kundehuset AS",
+        employer: fictionalEmployerNames.greyCloakCustomers,
         city: "Kongsvinger",
         county: "Innlandet",
         occupation: "Salg og service",
@@ -382,7 +383,7 @@ const compactSeeds: CompactSeed[] = [
         id: "grafisk-designer-bodo",
         title: "Jobb som grafisk designer i et sterkt fagmiljø",
         jobTitle: "Grafisk designer",
-        employer: "Nordlys Design AS",
+        employer: fictionalEmployerNames.silmarilDesign,
         city: "Bodø",
         county: "Nordland",
         occupation: "Kunst og kreative yrker",
@@ -392,7 +393,7 @@ const compactSeeds: CompactSeed[] = [
         id: "avdelingsleder-oslo",
         title: "Avdelingsleder til bo- og behandlingstilbud i Oslo",
         jobTitle: "Avdelingsleder",
-        employer: "Aurora Omsorg AS",
+        employer: fictionalEmployerNames.helmsDeepCare,
         city: "Oslo",
         county: "Oslo",
         occupation: "Helse og omsorg",
@@ -401,9 +402,9 @@ const compactSeeds: CompactSeed[] = [
     },
     {
         id: "renholder-skjelsjoen",
-        title: "Kontormedarbeider 60 % – Sjøsjøen Renhold",
+        title: "Kontormedarbeider 60 % – Anduin Renhold",
         jobTitle: "Kontormedarbeider",
-        employer: "Sjøsjøen Renhold AS",
+        employer: fictionalEmployerNames.anduinCleaning,
         city: "Skiptvet",
         county: "Østfold",
         occupation: "Kontor og administrasjon",
@@ -413,7 +414,7 @@ const compactSeeds: CompactSeed[] = [
         id: "lastebilsjafor",
         title: "Lastebilsjåfør klasse C – humør og flyt kan fikses",
         jobTitle: "Lastebilsjåfør",
-        employer: "L.M. Transport AS",
+        employer: fictionalEmployerNames.middleEarthTransport,
         city: "Innlandet",
         county: "Innlandet",
         occupation: "Transport og lager",
@@ -423,7 +424,7 @@ const compactSeeds: CompactSeed[] = [
         id: "ventilasjonsmontor",
         title: "Ventilasjonsinstallatør søkes – fagbrev ikke nødvendig",
         jobTitle: "Ventilasjonsinstallatør",
-        employer: "Pust Ventilasjon AS",
+        employer: fictionalEmployerNames.moriaVentilation,
         city: "Oslo",
         county: "Oslo",
         occupation: "Bygg og anlegg",
@@ -431,9 +432,9 @@ const compactSeeds: CompactSeed[] = [
     },
     {
         id: "selger-gandio",
-        title: "Gandio utvider og søker hyggelig og motivert selger",
+        title: "Gråkappe utvider og søker hyggelig og motivert selger",
         jobTitle: "Selger",
-        employer: "Gandio AS",
+        employer: fictionalEmployerNames.greyCloakSales,
         city: "Oslo",
         county: "Oslo",
         occupation: "Salg og service",
@@ -443,7 +444,7 @@ const compactSeeds: CompactSeed[] = [
         id: "utleier-trondheim",
         title: "Vi søker utleier for korttidsboliger",
         jobTitle: "Utleier",
-        employer: "Trømse Ferie AS",
+        employer: fictionalEmployerNames.shireHolidays,
         city: "Tromsø",
         county: "Troms",
         occupation: "Reiseliv",
@@ -451,9 +452,9 @@ const compactSeeds: CompactSeed[] = [
     },
     {
         id: "pedagogisk-leder",
-        title: "Pedagogisk leder søkes til Små Barnehager",
+        title: "Pedagogisk leder søkes til Entingene Barnehage",
         jobTitle: "Pedagogisk leder",
-        employer: "Små Barnehager AS",
+        employer: fictionalEmployerNames.entingKindergarten,
         city: "Haugesund",
         county: "Rogaland",
         occupation: "Barn og undervisning",
@@ -463,7 +464,7 @@ const compactSeeds: CompactSeed[] = [
         id: "nav-data-engineer",
         title: "Data engineer til moderne analyseteam",
         jobTitle: "Data Engineer",
-        employer: "Nav eksempel",
+        employer: fictionalEmployerNames.gondorDigital,
         city: "Oslo",
         county: "Oslo",
         occupation: "IT",
@@ -475,7 +476,7 @@ const compactSeeds: CompactSeed[] = [
         id: "kommune-it-arkitekt",
         title: "IT-arkitekt for sammenhengende tjenester",
         jobTitle: "IT-arkitekt",
-        employer: "Eksempel kommune",
+        employer: fictionalEmployerNames.shireMunicipality,
         city: "Drammen",
         county: "Buskerud",
         occupation: "IT",
@@ -487,7 +488,7 @@ const compactSeeds: CompactSeed[] = [
         id: "helseplattform-utvikler",
         title: "Frontendutvikler til digitale helsetjenester",
         jobTitle: "Frontendutvikler",
-        employer: "Helseeksempel HF",
+        employer: fictionalEmployerNames.imladrisHealth,
         city: "Trondheim",
         county: "Trøndelag",
         occupation: "IT",
@@ -498,7 +499,7 @@ const compactSeeds: CompactSeed[] = [
         id: "account-manager-vestland",
         title: "Account manager til bedriftsmarkedet",
         jobTitle: "Account Manager",
-        employer: "Vestland Partner AS",
+        employer: fictionalEmployerNames.westmarchPartner,
         city: "Bergen",
         county: "Vestland",
         occupation: "Salg og service",
@@ -507,7 +508,7 @@ const compactSeeds: CompactSeed[] = [
         id: "kundekonsulent-bodo",
         title: "Kundekonsulent med sans for gode opplevelser",
         jobTitle: "Kundekonsulent",
-        employer: "Nordkundeservice AS",
+        employer: fictionalEmployerNames.northernRealmSupport,
         city: "Bodø",
         county: "Nordland",
         occupation: "Salg og service",
@@ -517,7 +518,7 @@ const compactSeeds: CompactSeed[] = [
         id: "sommerjobb-kafe-tromso",
         title: "Sommerjobb på kafé i Tromsø",
         jobTitle: "Kafemedarbeider",
-        employer: "Nordkafé AS",
+        employer: fictionalEmployerNames.prancingPony,
         city: "Tromsø",
         county: "Troms",
         occupation: "Restaurant og mat",
@@ -544,14 +545,14 @@ function getApplication(seed: CompactSeed): ApplicationChannel {
     if (seed.application === "superrask") {
         return {
             type: "superrask",
-            alternativeEmail: `soknad@${seed.id}.example.invalid`,
+            alternativeEmail: "soknad@eventyrjobb.example.invalid",
             form: generellSuperraskSoknad,
         };
     }
 
     return {
         type: "email",
-        email: `soknad@${seed.id}.example.invalid`,
+        email: "soknad@eventyrjobb.example.invalid",
     };
 }
 

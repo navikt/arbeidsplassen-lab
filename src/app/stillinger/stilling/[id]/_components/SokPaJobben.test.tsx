@@ -24,9 +24,9 @@ describe("SokPaJobben", () => {
     it("viser e-postadresse og kopieringsknapp for e-postsøknad", () => {
         render(<SokPaJobben stilling={getStilling("raven-media-salgsreporter")} />);
 
-        expect(screen.getByRole("link", { name: "soknad@raven-media.example.invalid" })).toHaveAttribute(
+        expect(screen.getByRole("link", { name: "soknad@palantir-media.example.invalid" })).toHaveAttribute(
             "href",
-            "mailto:soknad@raven-media.example.invalid",
+            "mailto:soknad@palantir-media.example.invalid",
         );
         expect(screen.getByRole("button", { name: /kopier e-postadresse/iu })).toBeInTheDocument();
     });

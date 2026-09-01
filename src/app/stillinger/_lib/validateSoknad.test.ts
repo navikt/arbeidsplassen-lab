@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { lavvoSuperraskSoknad } from "@/mock/stillinger/superraskSoknad";
+import { gronneDragenSuperraskSoknad } from "@/mock/stillinger/superraskSoknad";
 import { hasSoknadErrors, validateSoknad } from "./validateSoknad";
 
 describe("validateSoknad", () => {
@@ -10,7 +10,7 @@ describe("validateSoknad", () => {
                 telephone: "",
                 answers: {},
             },
-            lavvoSuperraskSoknad,
+            gronneDragenSuperraskSoknad,
         );
 
         expect(errors.email).toMatch(/e-postadressen/u);
@@ -26,7 +26,7 @@ describe("validateSoknad", () => {
                 telephone: "123",
                 answers: { "rett-person": "a".repeat(801) },
             },
-            lavvoSuperraskSoknad,
+            gronneDragenSuperraskSoknad,
         );
 
         expect(errors.email).toMatch(/gyldig e-postadresse/u);
@@ -41,7 +41,7 @@ describe("validateSoknad", () => {
                 telephone: "00000000",
                 answers: { "rett-person": "Jeg liker å hjelpe kunder." },
             },
-            lavvoSuperraskSoknad,
+            gronneDragenSuperraskSoknad,
         );
 
         expect(hasSoknadErrors(errors)).toBe(false);

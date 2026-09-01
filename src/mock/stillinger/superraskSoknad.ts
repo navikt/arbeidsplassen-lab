@@ -1,6 +1,6 @@
 import type { SuperraskApplicationForm } from "@/app/stillinger/_lib/types";
 
-export const lavvoSuperraskSoknad = {
+export const gronneDragenSuperraskSoknad = {
     qualifications: [
         { id: "kundebehandling", label: "Kundebehandling og betjening av kasse" },
         { id: "matlaging", label: "Enkel matlaging og tilrettelegging" },

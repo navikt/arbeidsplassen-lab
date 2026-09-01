@@ -1,9 +1,0 @@
-{
-    "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.css"],
-    "exclude": ["src/**/*.test.*", "node_modules", ".next"],
-    "commands": {
-        "dev": "pnpm dev",
-        "build": "pnpm build",
-        "lint": "pnpm lint"
-    }
-}

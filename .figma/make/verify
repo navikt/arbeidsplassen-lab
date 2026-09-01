@@ -1,0 +1,23 @@
+#!/bin/bash
+set -euo pipefail
+
+BASE_URL="${FIGMA_MAKE_URL:-http://localhost:${PORT:-3006}}"
+HEALTHCHECK_ENDPOINT="${BASE_URL%/}/api/internal/isAlive"
+MAX_WAIT=120
+INTERVAL=2
+ELAPSED=0
+
+echo "Venter på utviklingsserveren på ${BASE_URL}."
+
+while [[ "$ELAPSED" -lt "$MAX_WAIT" ]]; do
+    if curl --fail --silent "$HEALTHCHECK_ENDPOINT" >/dev/null 2>&1; then
+        echo "Utviklingsserveren er klar."
+        exit 0
+    fi
+
+    sleep "$INTERVAL"
+    ELAPSED=$((ELAPSED + INTERVAL))
+done
+
+echo "Utviklingsserveren svarte ikke innen ${MAX_WAIT} sekunder."
+exit 1

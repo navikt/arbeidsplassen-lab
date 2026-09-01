@@ -1,3 +1,4 @@
+import { fictionalEmployerNames } from "@/mock/stillinger/mockIdentities";
 import type { Advert, AdvertFormData, RegistrationState, ScreeningQuestion } from "../_lib/types";
 
 export const INITIAL_ADVERT_ID = "058bb7d7-b06a-4d2b-b4d5-7719931885fb";
@@ -49,7 +50,7 @@ export function createEmptyAdvertForm(): AdvertFormData {
         hvemSerEtter: "",
         annonsetekst: "",
         overskrift: "",
-        bedriftsnavn: "Unyttig Komisk Hund DA",
+        bedriftsnavn: fictionalEmployerNames.secondBreakfast,
         omBedriften: "",
         sektor: "",
         kanaler: [],

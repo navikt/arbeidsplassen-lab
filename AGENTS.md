@@ -1,73 +1,120 @@
 # Arbeidsplassen Lab
 
-Arbeidsplassen Lab er en selvstendig prototypeapplikasjon som etterligner
-sentrale deler av arbeidsplassen.no. Den brukes til konseptutvikling,
-demonstrasjoner og brukertesting.
+Arbeidsplassen Lab er en frontend for rask konseptutvikling. Den etterligner
+sentrale sider og flyter på arbeidsplassen.no, men bruker bare lokal kode og
+fiktive data. Målet er å prøve ideer raskt og gjøre god frontendkode enkel å
+flytte videre til de virkelige repoene.
 
-## Prinsipper
+## Absolutte grenser
 
-- GitHub-repositoryet er fasiten.
-- Applikasjonen skal ikke kobles til backend, autentisering eller produksjonsdata.
-- Bruk lokale, typede mockdata når en prototype trenger data.
-- Bevar eksisterende header, footer, navigasjon og overordnet layout.
-- Nye prototyper skal normalt bare endre innholdet mellom header og footer.
-- Ikke kopier header eller footer inn i den enkelte prototypen.
-- Ikke legg til et nytt `main`-element dersom applikasjonsskallet allerede rendrer `main`.
-- Bruk eksisterende komponenter i Arbeidsplassen Lab før du lager nye.
-- Bruk Aksel-komponenter fra `@navikt/ds-react` og `@navikt/arbeidsplassen-react`.
-- Lag en egen komponent når Aksel ikke dekker konseptet eller når avviket er en
-  bevisst del av det som skal testes.
-- Ikke endre delte komponenter for å tilpasse én prototype uten at det er eksplisitt ønsket.
-- Prototyper skal være responsive og kunne brukes med tastatur.
-- Ikke legg inn tracking eller send innhold noe sted.
-- Alle data er hardkodet i `src/mock/`. Ingen nettverkskall.
-- Ingen autentisering, ingen PII, ingen hemmeligheter.
+- GitHub-repoet er fasiten for hva laben inneholder.
+- Ikke koble til backend, produksjons-API-er, autentisering eller produksjonsdata.
+- Ikke send eller spor data. Ikke legg inn PII, hemmeligheter eller ekte kontaktinformasjon.
+- Simuler innlogging, API-svar og lagring lokalt når en flyt trenger det.
+- Bevar appskallet i `src/app/layout.tsx`: header, footer, banner, hoppelenke og
+  det eneste `main`-elementet opprettes der.
 
-## Nye prototyper
+## Før du endrer kode
 
-Plasser nye konsepter under `src/app/prototyper/<prototype-navn>`.
+1. Les oppgaven og finn ut hvilken side eller flyt konseptet bygger på.
+2. Undersøk relevant rute, delte komponenter, mockdata og skjermbilder i `docs/`.
+3. Søk etter eksisterende komponenter i laben og Aksel før du lager noe nytt.
+4. Hvis originalrepoet er tilgjengelig, bruk det som referanse for layout,
+   begreper og rekkefølge. Ikke kopier integrasjoner, autentisering eller ekte data.
+5. Avklar gjennom koden om oppgaven skal endre en normal flyt eller være et
+   isolert alternativ.
 
-### Mappestruktur (feature by package)
+## Velg riktig plassering
 
-Hver prototype skal være en selvstendig pakke som kan løftes ut til et
-produksjonsrepo med minimalt arbeid. Strukturen:
+| Oppgave                                               | Plassering                                                             |
+|-------------------------------------------------------|------------------------------------------------------------------------|
+| Endre en eksisterende normalflyt eller en oppgitt URL | Endre den eksisterende feature-mappen under `src/app/`                 |
+| Utforske et nytt eller alternativt konsept isolert    | `src/app/prototyper/<prototype-navn>/`                                 |
+| Lage en test som skal kunne åpnes på ekstern ingress  | `src/app/brukertest/<test-navn>/`, bare når dette er eksplisitt ønsket |
+| Dele kode mellom flere flyter                         | `src/app/_common/`, bare når gjenbruket er reelt                       |
+
+Ikke flytt normale flyter inn under `/prototyper` bare fordi de bruker mockdata.
+Ikke endre andre konsepter eller globale stiler uten at oppgaven krever det.
+Legg nye isolerte konsepter til i `src/app/prototyper/page.tsx`.
+
+## Feature-struktur
+
+Hold en flyt samlet slik at den kan flyttes til et produksjonsrepo:
 
 ```text
-src/app/prototyper/<prototype-navn>/
-├── page.tsx                    # Next.js route (metadata + rendrer hovedkomponent)
-├── _components/                # Alle UI-komponenter for prototypen
-│   ├── <Hovedflyt>.tsx         # Orkestrator / hovedkomponent ("use client")
-│   ├── <Delkomponent>.tsx      # Selvstendige komponenter med tydelig ansvar
-│   └── <Delkomponent>.module.css  # CSS Modules ved behov (samlokalisert)
-├── _mock/                      # Mockdata spesifikt for denne prototypen
-│   └── data.ts                 # Typede mockobjekter
-└── _lib/                       # Hjelpefunksjoner og typer (valgfritt)
-    └── types.ts
+src/app/<flyt-eller-prototype>/
+├── page.tsx
+├── _components/
+│   ├── Hovedflyt.tsx
+│   └── Delkomponent.tsx
+├── _mock/
+│   └── data.ts
+├── _lib/
+│   └── types.ts
+└── _state/
+    └── FlytProvider.tsx
 ```
 
-Konvensjoner:
-- Eksporter typer fra komponentfilene eller `_lib/types.ts` — dette gjør det
-  enkelt å gjenbruke typene i produksjonskode.
-- Én komponent per fil. Gi filen samme navn som komponenten.
-- Hold komponenter små og fokuserte — ett ansvar per komponent.
-- Bruk `_mock/` for prototype-spesifikk data. Bruk `src/mock/` bare for data
-  som deles på tvers av flere sider.
-- Prefiks private mapper med `_` slik at Next.js ikke eksponerer dem som ruter.
+- Bruk bare mappene flyten trenger.
+- La `page.tsx` inneholde metadata og enkel komposisjon.
+- Bruk serverkomponenter som standard. Legg `"use client"` nærmest mulig interaksjonen.
+- Ha én fokusert komponent per fil, og gi filen samme navn som komponenten.
+- Eksporter typer som trengs ved senere overføring.
+- Gi komponenter data og handlinger via props fremfor skjulte koblinger til mockmiljøet.
 
-### Før implementering
+## Komponenter og visuell utforming
 
-1. Undersøk eksisterende layout, komponenter og mockdata.
-2. Avklar hvilken eksisterende side eller brukerflyt prototypen bygger på.
-3. Gjenbruk applikasjonsskallet og relevante komponenter.
-4. Implementer prototypen på en egen route uten å ødelegge eksisterende konsepter.
-5. Kontroller responsivitet, tastaturnavigasjon og prosjektets kvalitetssjekker.
+- Bruk eksisterende Lab-komponenter først.
+- Bruk Aksel fra `@navikt/ds-react`, `@navikt/aksel-icons` og
+  `@navikt/arbeidsplassen-react` før du lager egne UI-primitiver.
+- Kontroller installert API og eksisterende bruk før du skriver importer. Ikke
+  finn på komponentnavn eller props.
+- Bruk Aksel-tokens og layoutprimitiver fremfor tilfeldige farger og avstander.
+- Samlokaliser nødvendig CSS i en `*.module.css`-fil. Unngå globale stilendringer.
+- Behold produksjonslik layout og begrepsbruk, men hold implementasjonen enkel.
+- Dokumenter bevisste avvik når selve avviket er hypotesen som skal testes.
 
-### Etter implementering
+## Mockdata og lokal tilstand
 
-Agenten skal oppsummere:
+- Kort, fast visningstekst kan ligge direkte i komponenten.
+- Legg poster, lister og flytdata i feature-mappens `_mock/`.
+- Bruk `src/mock/` bare når de samme dataene deles av flere sider eller flyter.
+- Bruk typede objekter. Ikke gjør nettverkskall, heller ikke til et lokalt API.
+- Bruk lokal React-state for en økt. Bruk `localStorage` bare når valget skal
+  overleve en oppfriskning, og valider og versjoner data som leses tilbake.
+- Fiktive navn og innhold kan ha et Ringenes herre-inspirert fantasytema.
+  Dette gjelder bare synlig mockdata og hardkodet innhold, ikke navn på
+  komponenter, funksjoner, typer, variabler eller mapper.
+- Behold etablerte fagbegreper, feltetiketter og handlingsnavn realistiske med
+  mindre teksten er en del av hypotesen som skal testes.
+- Bruk tydelig ugyldige kontaktverdier som `example.invalid` og `00000000`.
 
-- URL til prototypen.
-- Hvilke eksisterende komponenter som ble gjenbrukt.
-- Hvilke nye komponenter som ble laget.
-- Eventuelle bevisste avvik fra Aksel eller eksisterende design.
-- Hvilke filer som er relevante for overføring til produksjon.
+## Interaksjon og kvalitet
+
+- Alle viktige handlinger skal fungere i prototypen, ikke bare se riktige ut.
+- Bruk semantisk HTML, synlig fokus, tilgjengelige navn og full tastaturnavigasjon.
+- Kontroller minst mobil og desktop. Unngå horisontal scrolling og avkuttet tekst.
+- Legg til målrettede tester for kjernelogikk, filtrering, validering og lagring.
+- Bevar eksisterende URL-er og data-ID-er når en endring ellers ville ødelagt
+  bokmerker eller lokalt lagret tilstand.
+
+Kjør før levering:
+
+```bash
+pnpm lint
+pnpm exec stylelint 'src/**/*.css'
+pnpm compileTS
+pnpm test
+pnpm build
+```
+
+## Levering
+
+Oppsummer:
+
+- URL-en eller URL-ene som ble opprettet eller endret
+- eksisterende komponenter som ble gjenbrukt
+- nye komponenter og mockfiler
+- hva som lagres lokalt
+- bevisste avvik fra Aksel eller dagens flyt
+- filene som er relevante når konseptet skal flyttes til produksjonsrepoet
