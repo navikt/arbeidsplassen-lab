@@ -1,28 +1,43 @@
 import { Buildings3Icon, LocationPinIcon } from "@navikt/aksel-icons";
 import { BodyShort, Heading, HStack, Tag, VStack } from "@navikt/ds-react";
 import Link from "next/link";
-import type { Stilling } from "@/types/stilling";
+import { formatDeadline, formatPublished } from "@/app/stillinger/_lib/formatStilling";
+import type { Stilling } from "@/app/stillinger/_lib/types";
+import FavoriteButton from "./FavoriteButton";
 
 type SearchResultItemProps = {
     stilling: Stilling;
+    hideFavorite?: boolean;
+    headingLevel?: "2" | "3";
 };
 
-export default function SearchResultItem({ stilling }: SearchResultItemProps) {
+export default function SearchResultItem({
+    stilling,
+    hideFavorite = false,
+    headingLevel = "2",
+}: SearchResultItemProps) {
     const location = [stilling.location.city, stilling.location.county].filter(Boolean).join(", ");
+    const deadline = formatDeadline(stilling);
 
     return (
-        <article aria-label={`${stilling.title}, ${stilling.employer.name}, ${location}`}>
+        <HStack
+            as="article"
+            gap="space-12"
+            justify="space-between"
+            wrap={false}
+            aria-label={`${stilling.title}, ${stilling.employer.name}, ${location}`}
+        >
             <VStack gap="space-12">
                 <VStack gap="space-4">
                     <BodyShort weight="semibold" size="small" textColor="subtle">
-                        {new Date(stilling.published).toLocaleDateString("nb-NO")}
+                        {formatPublished(stilling)}
                     </BodyShort>
-                    <Heading level="2" size="small" className="overflow-wrap-anywhere">
-                        <Link href={`/stillinger/${stilling.id}`} className="purple-when-visited">
+                    <Heading level={headingLevel} size="small" className="overflow-wrap-anywhere">
+                        <Link href={`/stillinger/stilling/${stilling.id}`} className="purple-when-visited">
                             {stilling.title}
                         </Link>
                     </Heading>
-                    {stilling.jobTitle && stilling.title.trim() !== stilling.jobTitle.trim() && (
+                    {stilling.title.trim() !== stilling.jobTitle.trim() && (
                         <BodyShort weight="semibold" className="overflow-wrap-anywhere">
                             {stilling.jobTitle}
                         </BodyShort>
@@ -43,18 +58,19 @@ export default function SearchResultItem({ stilling }: SearchResultItemProps) {
                 </VStack>
 
                 <HStack gap="space-16" align="center">
-                    {stilling.extent?.map((e) => (
-                        <Tag key={e} size="small" variant="neutral-moderate">
-                            {e}
+                    {stilling.application.type === "superrask" && (
+                        <Tag size="small" variant="moderate" data-color="accent">
+                            Superrask søknad
                         </Tag>
-                    ))}
-                    {stilling.applicationDue && (
+                    )}
+                    {deadline && (
                         <BodyShort weight="semibold" size="small" textColor="subtle">
-                            Frist: {new Date(stilling.applicationDue).toLocaleDateString("nb-NO")}
+                            {deadline}
                         </BodyShort>
                     )}
                 </HStack>
             </VStack>
-        </article>
+            {!hideFavorite && <FavoriteButton id={stilling.id} hideText />}
+        </HStack>
     );
 }

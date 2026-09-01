@@ -3,7 +3,7 @@
     "version": "2026.08.24-215218-154e33d",
     "scope": "repo",
     "source_repo": "navikt/copilot",
-    "source_sha": "154e33d",
+    "source_sha": "bdea218",
     "installed_at": "2026-08-26T00:35:05Z",
     "files": [
         {
@@ -12,23 +12,23 @@
         },
         {
             "path": ".github/agents/aksel.agent.md",
-            "hash": "d190246642818387"
+            "hash": "a85a02b7740368a9"
         },
         {
             "path": ".github/agents/code-review.agent.md",
-            "hash": "ba64c6ac567371bb"
+            "hash": "035725f511ba6f5b"
         },
         {
             "path": ".github/agents/forfatter.agent.md",
-            "hash": "3dd47103e9bf04a8"
+            "hash": "2529faa6918e3520"
         },
         {
             "path": ".github/agents/nav-pilot.agent.md",
-            "hash": "6ae2b1bab2466968"
+            "hash": "f381cdcba7fcb644"
         },
         {
             "path": ".github/skills/aksel-builder/",
-            "hash": "514152754088a85e"
+            "hash": "3075f3a92c2eb6fc"
         },
         {
             "path": ".github/skills/conventional-commit/",
@@ -52,7 +52,7 @@
         },
         {
             "path": ".github/skills/nav-plan/",
-            "hash": "0a160744cf2b4e82"
+            "hash": "db7618d269cd2f07"
         },
         {
             "path": ".github/skills/nav-deep-interview/",
@@ -68,11 +68,11 @@
         },
         {
             "path": ".github/skills/security-owasp/",
-            "hash": "6b06f512092bde91"
+            "hash": "b909907ae0e18174"
         },
         {
             "path": ".github/skills/terse-mode/",
-            "hash": "133c50e8cd7769d2"
+            "hash": "d28a057d860494bb"
         },
         {
             "path": ".github/instructions/code-review.instructions.md",
@@ -80,7 +80,7 @@
         },
         {
             "path": ".github/instructions/deliberate-ai-use.instructions.md",
-            "hash": "a0999e3cc902f4f5"
+            "hash": "68b3ca596e278482"
         },
         {
             "path": ".github/instructions/nextjs-aksel.instructions.md",
@@ -88,11 +88,11 @@
         },
         {
             "path": ".github/instructions/norwegian-text.instructions.md",
-            "hash": "890c8475efa051a5"
+            "hash": "b392ea7a4a952a5d"
         },
         {
             "path": ".github/instructions/performance.instructions.md",
-            "hash": "23b58fe157ef8f0e"
+            "hash": "74be7b9e34c1681e"
         },
         {
             "path": ".github/instructions/testing.instructions.md",
@@ -124,7 +124,7 @@
         },
         {
             "path": ".github/prompts/nextjs-api-route.prompt.md",
-            "hash": "691c380aa1e47757"
+            "hash": "5f65db6b410ea3e6"
         },
         {
             "path": ".github/prompts/nais-manifest.prompt.md",

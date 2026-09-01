@@ -1,6 +1,6 @@
 import { BodyLong, Heading, VStack } from "@navikt/ds-react";
 import { PageBlock } from "@navikt/ds-react/Page";
-import type { Artikkel } from "@/types/stilling";
+import type { Artikkel } from "@/types/artikkel";
 
 type ArtikkelContentProps = {
     artikkel: Artikkel;

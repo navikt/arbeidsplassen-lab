@@ -18,8 +18,11 @@ pnpm dev
 | Rute | Beskrivelse |
 |------|-------------|
 | `/` | Forsiden med hero og lenker |
-| `/stillinger` | Stillingssøk med filtre og mockede annonser |
-| `/stillinger/[id]` | Enkelt stillingsside |
+| `/stillinger` | Interaktivt stillingssøk med filtre og lokale mockannonser |
+| `/stillinger/favoritter` | Favoritter som lagres lokalt i nettleseren |
+| `/stillinger/lagrede-sok` | Navngitte søk som lagres lokalt i nettleseren |
+| `/stillinger/stilling/[id]` | Stillingsannonse med ekstern lenke, e-post eller superrask søknad |
+| `/stillinger/stilling/[id]/superrask-soknad` | Simulert søknadsskjema uten lagring eller innsending |
 | `/artikler/[slug]` | Artikkelside |
 | `/ny-stilling` | Forenklet stillingsregistrering (3 steg) |
 | `/prototyper` | Oversikt over prototyper |

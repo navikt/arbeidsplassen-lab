@@ -1,0 +1,10 @@
+.modal {
+    height: 100%;
+}
+
+.menuButton {
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid var(--ax-border-neutral-subtle);
+    border-radius: 0;
+}

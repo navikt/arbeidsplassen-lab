@@ -1,4 +1,4 @@
-import type { Artikkel } from "@/types/stilling";
+import type { Artikkel } from "@/types/artikkel";
 
 export const mockArtikler: Artikkel[] = [
     {

@@ -1,4 +1,8 @@
-.search-container {
+.searchContainer {
     margin: 0 auto;
-    background-color: var(--arb-brand-peach-100);
+    background-color: var(--arb-brand-green-100);
+}
+
+.savedMessage {
+    color: var(--ax-text-success-subtle);
 }
