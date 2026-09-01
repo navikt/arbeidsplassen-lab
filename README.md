@@ -17,7 +17,9 @@ pnpm dev
 
 | Rute | Beskrivelse |
 |------|-------------|
-| `/` | Forsiden med hero og lenker |
+| `/` | Forside for jobbsøkere med snarveier, artikler og inngang til prototypene |
+| `/bedrift` | Inngangsside for bedrifter og stillingsregistrering |
+| `/ung` | Jobber og råd for unge jobbsøkere |
 | `/stillinger` | Interaktivt stillingssøk med filtre og lokale mockannonser |
 | `/stillinger/favoritter` | Favoritter som lagres lokalt i nettleseren |
 | `/stillinger/lagrede-sok` | Navngitte søk som lagres lokalt i nettleseren |
@@ -25,9 +27,13 @@ pnpm dev
 | `/stillinger/stilling/[id]/superrask-soknad` | Simulert søknadsskjema uten lagring eller innsending |
 | `/artikler/[slug]` | Artikkelside |
 | `/ny-stilling` | Forenklet stillingsregistrering (3 steg) |
+| `/stillingsregistrering` | Simulert innlogging og Min bedriftsside |
+| `/stillingsregistrering/stillingsannonser` | Lokalt lagrede stillingsannonser med søk, filter og handlinger |
+| `/stillingsregistrering/rediger/[id]/steg/[steg]` | Produksjonslik stillingsregistrering med 5 steg |
+| `/stillingsregistrering/forhandsvis/[id]` | Lokal forhåndsvisning av en stillingsannonse |
 | `/prototyper` | Oversikt over prototyper |
 | `/prototyper/eksempel` | Eksempelprototype |
-| `/prototyper/ny-annonse` | Stillingsregistrering med 5 steg |
+| `/prototyper/ny-annonse` | Videresender til den produksjonslike stillingsregistreringen |
 
 ---
 
@@ -67,7 +73,7 @@ src/app/prototyper/<prototype-navn>/
 - Gjenbruk eksisterende komponenter før du lager nye.
 - Ikke endre andre prototyper eller globale stiler uten avtale.
 - Sørg for responsivitet og tastaturnavigasjon.
-- Se `src/app/prototyper/ny-annonse/` som referanseeksempel.
+- Se `src/app/prototyper/eksempel/` som referanseeksempel.
 
 ---
 

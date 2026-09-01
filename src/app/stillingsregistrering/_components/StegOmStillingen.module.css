@@ -1,0 +1,17 @@
+.tips summary {
+    width: fit-content;
+    color: var(--ax-text-accent);
+    cursor: pointer;
+    font-weight: var(--ax-font-weight-bold);
+}
+
+.tips p {
+    padding-block-start: var(--ax-space-8);
+}
+
+.suggestion {
+    align-self: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    white-space: normal;
+}

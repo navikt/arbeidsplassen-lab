@@ -11,6 +11,7 @@ import { Footer, SkipLink } from "@navikt/arbeidsplassen-react";
 import { Page } from "@navikt/ds-react";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import SimulatedAuthProvider from "@/app/_common/auth/SimulatedAuthProvider";
 import LabHeader from "@/app/_common/components/LabHeader";
 import PrototypeBanner from "@/app/_common/components/PrototypeBanner";
 
@@ -32,12 +33,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html lang="nb" className="light">
             <body data-theme="arbeidsplassen">
-                <SkipLink href="#main-content" />
-                <PrototypeBanner />
-                <Page contentBlockPadding="end" as="div" footer={<Footer />}>
-                    <LabHeader />
-                    <main id="main-content">{children}</main>
-                </Page>
+                <SimulatedAuthProvider>
+                    <SkipLink href="#main-content" />
+                    <PrototypeBanner />
+                    <Page contentBlockPadding="end" as="div" footer={<Footer />}>
+                        <LabHeader />
+                        <main id="main-content">{children}</main>
+                    </Page>
+                </SimulatedAuthProvider>
             </body>
         </html>
     );

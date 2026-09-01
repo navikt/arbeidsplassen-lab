@@ -1,0 +1,56 @@
+.editor {
+    overflow: hidden;
+    border: 1px solid var(--ax-border-neutral);
+    border-radius: var(--ax-radius-4);
+    background: var(--ax-bg-default);
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: var(--ax-space-8);
+    overflow-x: auto;
+    padding: var(--ax-space-8);
+    border-bottom: 1px solid var(--ax-border-neutral-subtle);
+}
+
+.textStyle,
+.tool,
+.disabledTool {
+    display: inline-flex;
+    min-width: var(--ax-space-40);
+    min-height: var(--ax-space-40);
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--ax-border-neutral-subtle);
+    border-radius: var(--ax-radius-4);
+    background: var(--ax-bg-default);
+}
+
+.textStyle {
+    min-width: 9rem;
+    justify-content: flex-start;
+    padding-inline: var(--ax-space-12);
+}
+
+.disabledTool {
+    color: var(--ax-text-neutral-subtle);
+}
+
+.textarea {
+    display: block;
+    width: 100%;
+    min-height: 10rem;
+    resize: vertical;
+    border: 0;
+    background: transparent;
+    color: var(--ax-text-neutral);
+    font: inherit;
+    line-height: 1.5;
+    padding: var(--ax-space-12);
+}
+
+.textarea:focus-visible {
+    outline: 3px solid var(--ax-border-focus);
+    outline-offset: -3px;
+}

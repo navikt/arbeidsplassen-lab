@@ -1,79 +1,47 @@
-"use client";
-
-import { MagnifyingGlassIcon } from "@navikt/aksel-icons";
-import { BodyLong, Button, Heading, HGrid, HStack, LinkCard } from "@navikt/ds-react";
-import { LinkCardAnchor, LinkCardDescription, LinkCardTitle } from "@navikt/ds-react/LinkCard";
+import { Heading, HGrid, VStack } from "@navikt/ds-react";
 import { PageBlock } from "@navikt/ds-react/Page";
-import Link from "next/link";
+import LandingHero from "@/app/_common/landing/LandingHero";
+import LandingLinkCard from "@/app/_common/landing/LandingLinkCard";
+import PageFeedback from "@/app/_common/landing/PageFeedback";
+import PrototypeEntry from "@/app/_common/landing/PrototypeEntry";
+import { jobseekerLanding } from "@/mock/landingPages";
 
 export default function Home() {
     return (
-        <div>
-            <PageBlock width="2xl" gutters>
-                <HStack gap="space-80" align="center" paddingBlock="space-40 space-48">
-                    <div>
-                        <Heading size="xlarge" level="1" spacing>
-                            Alle ledige jobber, <br />
-                            samlet på én plass
-                        </Heading>
+        <PageBlock width="xl" gutters>
+            <VStack gap={{ xs: "space-40", md: "space-64" }} paddingBlock={{ xs: "space-32", md: "space-48" }}>
+                <LandingHero hero={jobseekerLanding.hero} />
 
-                        <BodyLong size="large" spacing>
-                            Å lete etter jobb skal være enkelt. Fra deltid til direktør, finn jobben som passer for deg.
-                        </BodyLong>
+                <section aria-label="Jobb for unge">
+                    <LandingLinkCard card={jobseekerLanding.youngHighlight} layout="horizontal" />
+                </section>
 
-                        <HStack gap="space-16">
-                            <Button
-                                variant="primary"
-                                as="a"
-                                href="/stillinger"
-                                icon={<MagnifyingGlassIcon aria-hidden="true" />}
-                            >
-                                Søk etter jobber
-                            </Button>
-                        </HStack>
-                    </div>
-                </HStack>
-            </PageBlock>
-
-            <PageBlock width="2xl" gutters>
-                <Heading size="medium" spacing level="2">
-                    Nyttige ressurser
-                </Heading>
-                <HGrid gap="space-20 space-32" columns={{ xs: 1, md: "1fr 1fr 1fr" }}>
-                    <LinkCard>
-                        <LinkCardTitle>
-                            <LinkCardAnchor href="/artikler/tips-til-jobbsoknaden">
-                                Tips til jobbsøknaden
-                            </LinkCardAnchor>
-                        </LinkCardTitle>
-                        <LinkCardDescription>
-                            Les våre tips om hvordan skrive søknaden slik at en arbeidsgiver får lyst til å møte deg.
-                        </LinkCardDescription>
-                    </LinkCard>
-                    <LinkCard>
-                        <LinkCardTitle>
-                            <LinkCardAnchor href="/artikler/om-arbeidsplassen">Om arbeidsplassen.no</LinkCardAnchor>
-                        </LinkCardTitle>
-                        <LinkCardDescription>
-                            Arbeidsplassen.no samler alle ledige jobber på ett sted.
-                        </LinkCardDescription>
-                    </LinkCard>
-                    <LinkCard>
-                        <LinkCardTitle>
-                            <LinkCardAnchor href="/ny-stilling">Lys ut en stilling</LinkCardAnchor>
-                        </LinkCardTitle>
-                        <LinkCardDescription>Registrer en stillingsannonse enkelt og gratis.</LinkCardDescription>
-                    </LinkCard>
+                <HGrid
+                    as="section"
+                    aria-label="Nyttige artikler for jobbsøkere"
+                    columns={{ xs: 1, sm: 2, lg: 3 }}
+                    gap="space-24"
+                >
+                    {jobseekerLanding.editorialCards.map((card) => (
+                        <LandingLinkCard key={card.title} card={card} />
+                    ))}
                 </HGrid>
-            </PageBlock>
 
-            <PageBlock width="2xl" gutters>
-                <HStack paddingBlock="space-48 space-24" justify="center">
-                    <Heading size="small" level="2">
-                        <Link href="/prototyper">Se prototyper →</Link>
+                <section aria-labelledby="prov-ogsa">
+                    <Heading id="prov-ogsa" level="2" size="medium" spacing>
+                        Prøv også
                     </Heading>
-                </HStack>
-            </PageBlock>
-        </div>
+                    <HGrid columns={{ xs: 1, md: 2 }} gap="space-24">
+                        {jobseekerLanding.relatedLinks.map((card) => (
+                            <LandingLinkCard key={card.title} card={card} headingLevel="h3" layout="compact" />
+                        ))}
+                    </HGrid>
+                </section>
+
+                <PageFeedback prompt="Hvor fornøyd er du med arbeidsplassen.no?" linkLabel="Svar på undersøkelsen" />
+
+                <PrototypeEntry />
+            </VStack>
+        </PageBlock>
     );
 }

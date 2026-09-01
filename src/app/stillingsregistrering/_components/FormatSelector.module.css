@@ -1,0 +1,26 @@
+.structured,
+.unstructured {
+    display: flex;
+    min-height: 5rem;
+    align-items: center;
+    justify-content: center;
+    background: var(--ax-bg-neutral-soft);
+}
+
+.structured {
+    flex-direction: column;
+    gap: var(--ax-space-4);
+}
+
+.structured span {
+    width: 4rem;
+    height: var(--ax-space-12);
+    background: var(--ax-bg-accent-strong);
+}
+
+.unstructured span {
+    width: 4rem;
+    height: 3rem;
+    border-top: var(--ax-space-4) solid var(--ax-border-neutral-subtle);
+    background: var(--ax-bg-neutral-moderate);
+}

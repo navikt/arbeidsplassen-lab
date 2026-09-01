@@ -1,0 +1,14 @@
+.controls {
+    width: 100%;
+}
+
+.search {
+    flex: 1;
+    min-width: 15rem;
+}
+
+@media (max-width: 767px) {
+    .controls > * {
+        width: 100%;
+    }
+}

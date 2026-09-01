@@ -1,0 +1,4 @@
+.checkboxAlign {
+    align-self: end;
+    padding-bottom: var(--ax-space-8);
+}

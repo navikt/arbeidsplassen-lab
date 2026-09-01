@@ -36,8 +36,8 @@ export default function PrototyperPage() {
                         <LinkCardAnchor href="/prototyper/ny-annonse">Ny stillingsannonse</LinkCardAnchor>
                     </LinkCardTitle>
                     <LinkCardDescription>
-                        Prototype av stillingsregistrering med 5 steg: praktisk info, om stillingen, om bedriften,
-                        søknad og publisering.
+                        Produksjonslik stillingsregistrering med lokal innlogging, fem steg, forhåndsvisning og
+                        annonseoversikt.
                     </LinkCardDescription>
                 </LinkCard>
 

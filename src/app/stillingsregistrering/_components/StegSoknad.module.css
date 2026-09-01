@@ -1,0 +1,9 @@
+.details summary {
+    width: fit-content;
+    color: var(--ax-text-accent);
+    cursor: pointer;
+}
+
+.details p {
+    padding-block-start: var(--ax-space-8);
+}

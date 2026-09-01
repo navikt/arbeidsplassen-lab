@@ -1,0 +1,78 @@
+.heroCopy {
+    max-width: 42rem;
+}
+
+.heroIllustration {
+    width: min(100%, 23rem);
+    height: auto;
+    justify-self: center;
+}
+
+.linkCard {
+    height: 100%;
+}
+
+.compactCard {
+    min-height: 7.5rem;
+}
+
+.pinkCard,
+.prototypeEntry {
+    background-color: var(--arb-brand-pink-400);
+}
+
+.illustrationPanel {
+    display: grid;
+    min-height: 12rem;
+    height: 100%;
+    place-items: center;
+    padding: var(--ax-space-20);
+}
+
+.illustrationBlue {
+    background-color: var(--arb-brand-blue-200);
+}
+
+.illustrationGreen {
+    background-color: var(--arb-brand-green-200);
+}
+
+.illustrationPeach {
+    background-color: var(--arb-brand-peach-200);
+}
+
+.illustrationPink {
+    background-color: var(--arb-brand-pink-400);
+}
+
+.cardIllustration {
+    width: min(100%, 12rem);
+    max-height: 9rem;
+    height: auto;
+}
+
+@media (min-width: 48rem) {
+    .heroIllustration {
+        justify-self: end;
+    }
+
+    .horizontalCard {
+        grid-template-areas:
+            "image title arrow"
+            "image description description";
+        grid-template-columns: minmax(16rem, 2fr) minmax(0, 3fr) auto;
+        grid-template-rows: min-content min-content;
+        align-content: center;
+    }
+
+    .horizontalCard > [class~="aksel-link-card__image-container"] {
+        align-self: stretch;
+        margin-block: calc(var(--ax-space-16) * -1);
+        margin-inline: calc(var(--ax-space-20) * -1) var(--ax-space-32);
+        border-radius: var(--ax-radius-12) 0 0 var(--ax-radius-12);
+    }
+
+    .horizontalCard .illustrationPanel {
+        min-height: 15rem;
+    }
+}
