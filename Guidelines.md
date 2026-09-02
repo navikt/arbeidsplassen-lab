@@ -1,53 +1,29 @@
 # Arbeidsplassen Lab
 
-Disse retningslinjene gjelder Figma Make. De er korte med vilje: undersøk
-eksisterende kode før du fyller inn detaljer selv.
+Korte retningslinjer for Figma Make. Les relevant kode og skjermbilder i
+`docs/` før du endrer noe.
 
-## Før du gjør en endring
+## Omfang
 
-- Forstå målet, hvilken flyt som berøres og hvilke sider som skal henge sammen.
-- Les relevant kode og skjermbilder i `docs/` før du foreslår en løsning.
-- Bruk planmodus før endringer som går over flere sider eller endrer en hel flyt.
-- Behold oppgaven avgrenset. Ikke rydd eller redesign andre deler samtidig.
+- Endre eksisterende feature for en normalflyt eller oppgitt URL.
+- Legg isolerte alternativer i `src/app/prototyper/<navn>/` og oppdater oversikten.
+- Bruk `src/app/brukertest/<navn>/` bare når ekstern testing er eksplisitt ønsket.
+- Bevar appskallet fra `src/app/layout.tsx`; ikke lag header, footer eller `main`.
+- Bruk planmodus for endringer på tvers av flere sider. Ikke endre annet samtidig.
 
-## Plassering og appskall
+## Kode
 
-- Endre eksisterende feature under `src/app/` når oppgaven gjelder en normalflyt
-  eller en konkret eksisterende URL.
-- Legg nye, alternative konsepter i `src/app/prototyper/<navn>/`.
-- Legg nye konsepter til i oversikten i `src/app/prototyper/page.tsx`.
-- Bruk `src/app/brukertest/<navn>/` bare når ekstern brukertesting er uttrykkelig ønsket.
-- Bevar header, footer, navigasjon, prototypebanner og hoppelenke fra
-  `src/app/layout.tsx`.
-- Ikke lag et nytt `main`-element.
-- Legg bare sideinnholdet mellom eksisterende header og footer.
+- Gjenbruk Lab-komponenter og installert Aksel. Ikke legg til andre UI-biblioteker.
+- Hold featuren samlet; bruk CSS Modules og unngå globale stilendringer.
+- Sørg for responsivitet, semantisk HTML, synlig fokus og tastaturnavigasjon.
+- Bruk lokale, typede mockdata og lokal state. Ingen nettverkskall, backend,
+  ekte autentisering, tracking, PII, hemmeligheter eller produksjonsdata.
+- Bruk `localStorage` bare når tilstand skal overleve oppfriskning.
+- Fantasytema kan brukes i synlig mockinnhold, aldri i kodeidentifikatorer.
+  Behold fagbegreper realistiske og bruk `example.invalid` for kontaktdata.
 
-## Komponenter og design
+## Levering
 
-- Gjenbruk komponenter i prosjektet før du lager nye.
-- Bruk Aksel-komponenter og -tokens fra de installerte `@navikt`-pakkene.
-- Undersøk eksisterende bruk og faktisk komponent-API. Ikke finn på importer eller props.
-- Ikke installer et annet komponentbibliotek.
-- Bruk responsiv layout, semantisk HTML, synlig fokus og tastaturnavigasjon.
-- Hold lokale stiler i CSS Modules. Ikke endre globale stiler uten at oppgaven krever det.
-
-## Kode og data
-
-- Hold en feature samlet i `_components/`, `_mock/`, `_lib/` og eventuelt `_state/`.
-- Bruk én fokusert komponent per fil og domenebeskrivende navn i koden.
-- Bruk lokale, typede mockdata og lokal React-state. Ikke gjør nettverkskall.
-- Bruk `localStorage` bare når tilstand skal overleve en oppfriskning.
-- Ikke legg til backend, ekte autentisering, tracking, PII, hemmeligheter eller produksjonsdata.
-- Ringenes herre-inspirerte fantasynavn og tekst kan brukes i synlig mockinnhold.
-  Ikke bruk fantasytemaet i navn på filer, komponenter, funksjoner, variabler eller typer.
-- Behold fagbegreper, feltetiketter og handlingsnavn realistiske hvis teksten
-  ikke er en del av konseptet som testes.
-- Bruk `example.invalid` og åpenbart ugyldige telefonnumre for kontaktdata.
-
-## Før du leverer
-
-- Kontroller den berørte flyten i mobil- og desktopbredde og med tastatur.
-- Kjør `pnpm lint`, `pnpm exec stylelint 'src/**/*.css'`, `pnpm compileTS`,
-  `pnpm test` og `pnpm build`.
-- Beskriv endrede URL-er, gjenbrukte og nye komponenter, lokale
-  lagringsvalg og bevisste designavvik i pull requesten.
+- Kontroller hele flyten på mobil, desktop og med tastatur.
+- Kjør relevante scripts i `package.json`.
+- Beskriv URL-er, lokal lagring og bevisste designavvik i pull requesten.
