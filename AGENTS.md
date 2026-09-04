@@ -17,7 +17,8 @@ enkle, interaktive og lette å flytte til produksjonsrepoene.
 
 - Eksisterende normalflyt eller oppgitt URL: endre tilhørende feature under `src/app/`.
 - Nytt, isolert alternativ: bruk `src/app/prototyper/<navn>/` og oppdater
-  `src/app/prototyper/page.tsx`.
+  `src/app/prototyper/page.tsx`. Sett `createdAt` til datoen prototypekortet legges
+  til (`YYYY-MM-DD`), og vis datoen på norsk uten klokkeslett.
 - Ekstern brukertest: bruk `src/app/brukertest/<navn>/` bare når det er eksplisitt ønsket.
 - Del kode i `src/app/_common/` bare ved reell gjenbruk.
 - Ikke endre andre konsepter eller globale stiler uten behov.

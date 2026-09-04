@@ -27,6 +27,8 @@ Hver prototype er en selvstendig pakke. Hold alt som hører sammen samlet:
 - Ikke endre andre prototyper.
 - Sørg for at prototypen er responsiv og tilgjengelig med tastatur.
 - Legg prototypen til i prototypeoversikten (`src/app/prototyper/page.tsx`).
+- Sett `createdAt` til datoen prototypekortet legges til, skrevet som `YYYY-MM-DD`.
+- Vis datoen på norsk i `<time dateTime={createdAt}>` uten klokkeslett.
 
 ## Komponentdesign
 
