@@ -10,8 +10,8 @@ function matchesPathSegment(pathname: string, route: string) {
 }
 
 export function getLabHeaderConfig(pathname: string): LabHeaderConfig {
-    const isCompanyPage = ["/bedrift", "/ny-stilling", "/stillingsregistrering"].some((route) =>
-        matchesPathSegment(pathname, route),
+    const isCompanyPage = ["/bedrift", "/ny-stilling", "/stillingsregistrering", "/prototyper/bedriftsprofil"].some(
+        (route) => matchesPathSegment(pathname, route),
     );
 
     if (isCompanyPage) {

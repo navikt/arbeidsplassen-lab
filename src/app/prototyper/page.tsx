@@ -33,6 +33,16 @@ export default function PrototyperPage() {
 
                 <LinkCard>
                     <LinkCardTitle>
+                        <LinkCardAnchor href="/prototyper/bedriftsprofil">Bedriftsprofilverkstedet</LinkCardAnchor>
+                    </LinkCardTitle>
+                    <LinkCardDescription>
+                        Bygg en tydelig bedriftsprofil med kuraterte profilvalg, aktivitetsmerker og levende
+                        forhåndsvisning for jobbsøkere.
+                    </LinkCardDescription>
+                </LinkCard>
+
+                <LinkCard>
+                    <LinkCardTitle>
                         <LinkCardAnchor href="/prototyper/ny-annonse">Ny stillingsannonse</LinkCardAnchor>
                     </LinkCardTitle>
                     <LinkCardDescription>

@@ -1,0 +1,289 @@
+.workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.82fr);
+    gap: var(--ax-space-24);
+    align-items: start;
+}
+
+.editorPanel,
+.previewPanel {
+    min-width: 0;
+}
+
+.previewPanel {
+    position: sticky;
+    top: var(--ax-space-16);
+    max-height: calc(100vh - var(--ax-space-32));
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+}
+
+.mobileToggle {
+    display: none;
+}
+
+.statusMessage {
+    color: var(--ax-text-success);
+}
+
+.visualRadio {
+    padding-block: var(--ax-space-8);
+}
+
+.visualOption {
+    display: flex;
+    gap: var(--ax-space-12);
+    align-items: center;
+    min-width: 0;
+}
+
+.optionCopy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: var(--ax-space-2);
+}
+
+.optionTitle {
+    font-weight: var(--ax-font-weight-bold);
+}
+
+.optionDescription {
+    color: var(--ax-text-neutral-subtle);
+    font-size: var(--ax-font-size-small);
+}
+
+.paletteSwatch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex: 0 0 auto;
+    width: var(--ax-space-64);
+    height: var(--ax-space-40);
+    overflow: hidden;
+    border: 1px solid var(--ax-border-neutral-subtle);
+    border-radius: var(--ax-radius-8);
+}
+
+.paletteSwatch span:first-child {
+    background: var(--ax-bg-soft);
+}
+
+.paletteSwatch span:last-child {
+    background: var(--ax-bg-strong);
+}
+
+.heroThumbnail {
+    display: block;
+    flex: 0 0 auto;
+    width: var(--ax-space-96);
+    height: var(--ax-space-56);
+    object-fit: cover;
+    border: 1px solid var(--ax-border-neutral-subtle);
+    border-radius: var(--ax-radius-8);
+}
+
+.logoThumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: var(--ax-space-96);
+    min-height: var(--ax-space-64);
+    padding: var(--ax-space-8);
+    background: var(--ax-bg-soft);
+    border: 1px solid var(--ax-border-subtle);
+    border-radius: var(--ax-radius-8);
+}
+
+.profileLogo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--ax-space-80);
+    height: var(--ax-space-80);
+    padding: var(--ax-space-8);
+    color: var(--ax-text-contrast);
+    font-size: var(--ax-font-size-heading-medium);
+    font-weight: var(--ax-font-weight-bold);
+    line-height: 1;
+    background: var(--ax-bg-strong);
+    border: var(--ax-space-4) solid var(--ax-bg-default);
+    border-radius: var(--ax-radius-16);
+}
+
+.profileLogoCompact {
+    width: var(--ax-space-48);
+    height: var(--ax-space-48);
+    padding: var(--ax-space-4);
+    font-size: var(--ax-font-size-medium);
+    border-width: var(--ax-space-2);
+    border-radius: var(--ax-radius-8);
+}
+
+.profileLogoEmblem {
+    border-radius: var(--ax-radius-full) var(--ax-radius-full) var(--ax-radius-16) var(--ax-radius-full);
+    transform: rotate(-8deg);
+}
+
+.profileLogoEmblemLetter {
+    transform: rotate(8deg);
+}
+
+.profileLogoWordmark {
+    width: auto;
+    max-width: 100%;
+    padding-inline: var(--ax-space-16);
+    font-size: var(--ax-font-size-large);
+    white-space: nowrap;
+    border-radius: var(--ax-radius-full);
+}
+
+.profileLogoWordmark.profileLogoCompact {
+    max-width: var(--ax-space-96);
+    padding-inline: var(--ax-space-8);
+    overflow: hidden;
+    font-size: var(--ax-font-size-small);
+    text-overflow: ellipsis;
+}
+
+.badgeList,
+.publicBadgeList,
+.highlightList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.badgeIcon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-size: var(--ax-font-size-heading-small);
+}
+
+.publicProfile {
+    overflow: hidden;
+    color: var(--ax-text-default);
+    background: var(--ax-bg-soft);
+    border: 1px solid var(--ax-border-subtle);
+    border-radius: var(--ax-radius-16);
+}
+
+.hero {
+    aspect-ratio: 15 / 8;
+    overflow: hidden;
+    background: var(--ax-bg-moderate);
+}
+
+.heroImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.publicProfileContent {
+    padding: 0 var(--ax-space-20) var(--ax-space-24);
+}
+
+.logoOverlap {
+    position: relative;
+    z-index: 1;
+    min-height: var(--ax-space-48);
+    margin-top: calc(-1 * var(--ax-space-40));
+    margin-bottom: var(--ax-space-12);
+}
+
+.publicFacts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--ax-space-12);
+    padding: var(--ax-space-16);
+    margin: 0;
+    background: var(--ax-bg-default);
+    border-radius: var(--ax-radius-8);
+}
+
+.publicFacts div {
+    min-width: 0;
+}
+
+.publicFacts dt {
+    color: var(--ax-text-neutral-subtle);
+    font-size: var(--ax-font-size-small);
+}
+
+.publicFacts dd {
+    margin: var(--ax-space-2) 0 0;
+    overflow-wrap: anywhere;
+    font-weight: var(--ax-font-weight-bold);
+}
+
+.publicBadgeList {
+    display: grid;
+    gap: var(--ax-space-8);
+}
+
+.publicBadge {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ax-space-6);
+    padding: var(--ax-space-12);
+    background: var(--ax-bg-default);
+    border: 1px solid var(--ax-border-subtle);
+    border-radius: var(--ax-radius-8);
+}
+
+.highlightList {
+    display: grid;
+    gap: var(--ax-space-8);
+}
+
+.highlightList li {
+    position: relative;
+    padding-left: var(--ax-space-20);
+}
+
+.highlightList li::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--ax-text-decoration);
+    content: "✓";
+}
+
+@media (max-width: 63.99rem) {
+    .workspace {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .previewPanel {
+        position: static;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .mobileToggle {
+        display: block;
+    }
+
+    .workspace[data-mobile-view="edit"] .previewPanel,
+    .workspace[data-mobile-view="preview"] .editorPanel {
+        display: none;
+    }
+}
+
+@media (max-width: 35.99rem) {
+    .publicFacts {
+        grid-template-columns: 1fr;
+    }
+
+    .visualOption {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .heroThumbnail,
+    .logoThumbnail {
+        width: 100%;
+    }
+}
