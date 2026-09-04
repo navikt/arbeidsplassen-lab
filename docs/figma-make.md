@@ -56,15 +56,15 @@ Figma Make bruker fem filer i `.figma/make/`:
 | `install` | Installerer låste avhengigheter med pnpm                       |
 | `dev`     | Starter Next.js på port 3006                                   |
 | `verify`  | Venter på `/api/internal/isAlive` før forhåndsvisningen åpnes  |
-| `env`     | Angir port, lokal URL, timeout og Figma Make-tilpasset Next.js-oppsett |
+| `env`     | Angir port, lokal URL, timeout og aktiverer redigerbar forside         |
 
 Filene er committed slik at hver ny sesjon og branch får samme oppsett. De
 inneholder ingen tokens. Lokal pakkeautentisering må allerede være konfigurert.
 
-Figma Make-miljøet slår av Next.js sin nye fragmentbaserte scroll-handler.
-Handleren kan ellers vises som `InnerScrollHandlerNew` over hele ruteinnholdet,
-slik at Make ikke klarer å velge elementene under. Endringen gjelder bare
-serveren som startes av Figma Make.
+Forsiden rendres med en egen klientgrense når `FIGMA_MAKE_EDITABLE=true`.
+Da kan Make velge våre komponenter innenfor Next.js sine interne scroll- og
+fokuskomponenter. Vanlig utvikling og produksjonsbygg mangler variabelen og
+beholder forsiden som Server Component.
 
 ## Retningslinjer i Make
 
@@ -156,7 +156,7 @@ Beskriv i pull requesten:
 | `pnpm install` gir `401`    | Sett opp lokal GitHub Packages-tilgang; ikke legg token i repoet                |
 | Forhåndsvisningen er tom    | Åpne `http://localhost:3006` manuelt og kontroller output fra `dev` og `verify` |
 | Feil prosjekt vises         | Stopp andre servere på port 3006 og start en ny sesjon                          |
-| Hele siden blir én valgflate | Hent siste versjon av repoet og start en ny sesjon, slik at oppdatert `env` leses |
+| Hele forsiden blir én valgflate | Hent siste versjon av repoet og start en ny sesjon, slik at klientgrensen aktiveres |
 | Make følger ikke reglene    | Be Make lese `Guidelines.md`, eller last filen opp i guidelines-mappen          |
 | Mange uventede filer endres | Stopp, se gjennom git-diffen og gå tilbake til siste relevante Make-commit      |
 

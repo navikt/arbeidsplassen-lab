@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import FigmaMakeHome from "./FigmaMakeHome";
 import Home from "./Home";
 
 export const metadata: Metadata = {
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-    return <Home />;
+    return process.env.FIGMA_MAKE_EDITABLE === "true" ? <FigmaMakeHome /> : <Home />;
 }
