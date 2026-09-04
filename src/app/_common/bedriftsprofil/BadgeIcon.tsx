@@ -10,7 +10,7 @@ import {
     StarIcon,
     TrendUpIcon,
 } from "@navikt/aksel-icons";
-import type { BadgeIconName } from "../_lib/types";
+import type { BadgeIconName } from "./types";
 
 export default function BadgeIcon({ icon }: { icon: BadgeIconName }) {
     switch (icon) {

@@ -1,4 +1,4 @@
-import type { EmployerActivity, EmployerProfile, ProfileHero, ProfileLogo, ProfileTheme } from "../_lib/types";
+import type { EmployerActivity, EmployerProfile, ProfileHero, ProfileLogo, ProfileTheme } from "./types";
 
 export const profileThemes = [
     {

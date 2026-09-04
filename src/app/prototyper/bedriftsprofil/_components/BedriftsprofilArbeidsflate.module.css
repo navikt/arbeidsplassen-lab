@@ -95,57 +95,6 @@
     border-radius: var(--ax-radius-8);
 }
 
-.profileLogo {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--ax-space-80);
-    height: var(--ax-space-80);
-    padding: var(--ax-space-8);
-    color: var(--ax-text-contrast);
-    font-size: var(--ax-font-size-heading-medium);
-    font-weight: var(--ax-font-weight-bold);
-    line-height: 1;
-    background: var(--ax-bg-strong);
-    border: var(--ax-space-4) solid var(--ax-bg-default);
-    border-radius: var(--ax-radius-16);
-}
-
-.profileLogoCompact {
-    width: var(--ax-space-48);
-    height: var(--ax-space-48);
-    padding: var(--ax-space-4);
-    font-size: var(--ax-font-size-medium);
-    border-width: var(--ax-space-2);
-    border-radius: var(--ax-radius-8);
-}
-
-.profileLogoEmblem {
-    border-radius: var(--ax-radius-full) var(--ax-radius-full) var(--ax-radius-16) var(--ax-radius-full);
-    transform: rotate(-8deg);
-}
-
-.profileLogoEmblemLetter {
-    transform: rotate(8deg);
-}
-
-.profileLogoWordmark {
-    width: auto;
-    max-width: 100%;
-    padding-inline: var(--ax-space-16);
-    font-size: var(--ax-font-size-large);
-    white-space: nowrap;
-    border-radius: var(--ax-radius-full);
-}
-
-.profileLogoWordmark.profileLogoCompact {
-    max-width: var(--ax-space-96);
-    padding-inline: var(--ax-space-8);
-    overflow: hidden;
-    font-size: var(--ax-font-size-small);
-    text-overflow: ellipsis;
-}
-
 .badgeList,
 .publicBadgeList,
 .highlightList {

@@ -1,7 +1,7 @@
 import { HGrid, Radio, RadioGroup, TextField, VStack } from "@navikt/ds-react";
-import type { EmployerProfile, UpdateEmployerProfileField } from "../_lib/types";
-import { workModes } from "../_lib/types";
-import { getSafeExternalUrl } from "../_lib/validation";
+import type { EmployerProfile, UpdateEmployerProfileField } from "@/app/_common/bedriftsprofil/types";
+import { workModes } from "@/app/_common/bedriftsprofil/types";
+import { getSafeExternalUrl } from "@/app/_common/bedriftsprofil/validation";
 
 type NokkelfaktaSkjemaProps = {
     profile: EmployerProfile;

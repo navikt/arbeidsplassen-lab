@@ -1,5 +1,5 @@
-import type { EmployerProfile, ProfileCompleteness } from "./types";
-import { getSafeExternalUrl } from "./validation";
+import type { EmployerProfile, ProfileCompleteness } from "@/app/_common/bedriftsprofil/types";
+import { getSafeExternalUrl } from "@/app/_common/bedriftsprofil/validation";
 
 type CompletenessItem = {
     completed: boolean;

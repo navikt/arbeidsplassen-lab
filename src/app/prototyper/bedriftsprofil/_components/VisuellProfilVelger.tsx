@@ -1,9 +1,9 @@
 import { Radio, RadioGroup, VStack } from "@navikt/ds-react";
 import Image from "next/image";
-import type { EmployerProfile, UpdateEmployerProfileField } from "../_lib/types";
-import { profileHeroes, profileLogos, profileThemes } from "../_mock/profile";
+import ProfilLogo from "@/app/_common/bedriftsprofil/ProfilLogo";
+import { profileHeroes, profileLogos, profileThemes } from "@/app/_common/bedriftsprofil/profile";
+import type { EmployerProfile, UpdateEmployerProfileField } from "@/app/_common/bedriftsprofil/types";
 import styles from "./BedriftsprofilArbeidsflate.module.css";
-import ProfilLogo from "./ProfilLogo";
 
 type VisuellProfilVelgerProps = {
     profile: EmployerProfile;

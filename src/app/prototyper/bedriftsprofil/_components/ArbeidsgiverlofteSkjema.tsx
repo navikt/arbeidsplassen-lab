@@ -1,5 +1,5 @@
 import { HGrid, Textarea, TextField, VStack } from "@navikt/ds-react";
-import type { EmployerProfile, UpdateEmployerProfileField } from "../_lib/types";
+import type { EmployerProfile, UpdateEmployerProfileField } from "@/app/_common/bedriftsprofil/types";
 
 type ArbeidsgiverlofteSkjemaProps = {
     profile: EmployerProfile;

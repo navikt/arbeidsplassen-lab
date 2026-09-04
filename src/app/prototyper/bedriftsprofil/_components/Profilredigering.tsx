@@ -1,5 +1,9 @@
 import { Accordion, Heading, VStack } from "@navikt/ds-react";
-import type { EmployerBadgeResult, EmployerProfile, UpdateEmployerProfileField } from "../_lib/types";
+import type {
+    EmployerBadgeResult,
+    EmployerProfile,
+    UpdateEmployerProfileField,
+} from "@/app/_common/bedriftsprofil/types";
 import Aktivitetsmerker from "./Aktivitetsmerker";
 import ArbeidsgiverlofteSkjema from "./ArbeidsgiverlofteSkjema";
 import GrunnprofilSkjema from "./GrunnprofilSkjema";

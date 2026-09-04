@@ -1,5 +1,5 @@
-import type { ProfileLogoId } from "../_lib/types";
-import styles from "./BedriftsprofilArbeidsflate.module.css";
+import styles from "./ProfilLogo.module.css";
+import type { ProfileLogoId } from "./types";
 
 type ProfilLogoProps = {
     variant: ProfileLogoId;

@@ -3,16 +3,24 @@
 import { BodyLong, BodyShort, Button, Heading, HGrid, LocalAlert, ToggleGroup, VStack } from "@navikt/ds-react";
 import { PageBlock } from "@navikt/ds-react/Page";
 import { useEffect, useMemo, useState } from "react";
-import { getEmployerBadgeResults } from "../_lib/badges";
-import { getProfileCompleteness } from "../_lib/profileCompleteness";
+import { getEmployerBadgeResults } from "@/app/_common/bedriftsprofil/badges";
+import {
+    createDefaultEmployerProfile,
+    mockEmployerActivity,
+    profileReferenceDate,
+} from "@/app/_common/bedriftsprofil/profile";
 import {
     clearProfileStorage,
     PROFILE_STORAGE_UNAVAILABLE_MESSAGE,
     readProfileStorage,
     writeProfileStorage,
-} from "../_lib/profileStorage";
-import type { EmployerJobSummary, EmployerProfile, UpdateEmployerProfileField } from "../_lib/types";
-import { createDefaultEmployerProfile, mockEmployerActivity, profileReferenceDate } from "../_mock/profile";
+} from "@/app/_common/bedriftsprofil/profileStorage";
+import type {
+    EmployerJobSummary,
+    EmployerProfile,
+    UpdateEmployerProfileField,
+} from "@/app/_common/bedriftsprofil/types";
+import { getProfileCompleteness } from "../_lib/profileCompleteness";
 import styles from "./BedriftsprofilArbeidsflate.module.css";
 import OffentligBedriftsprofil from "./OffentligBedriftsprofil";
 import Profilredigering from "./Profilredigering";

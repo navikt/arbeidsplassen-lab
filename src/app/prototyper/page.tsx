@@ -43,6 +43,18 @@ export default function PrototyperPage() {
 
                 <LinkCard>
                     <LinkCardTitle>
+                        <LinkCardAnchor href="/prototyper/profilberiket-stillingsannonse">
+                            Profilberiket stillingsannonse
+                        </LinkCardAnchor>
+                    </LinkCardTitle>
+                    <LinkCardDescription>
+                        Se Den Grønne Dragen-annonsen med profilfarge, toppbilde, logo, arbeidsgiverløfte og
+                        aktivitetsmerker fra bedriftsprofilverkstedet.
+                    </LinkCardDescription>
+                </LinkCard>
+
+                <LinkCard>
+                    <LinkCardTitle>
                         <LinkCardAnchor href="/prototyper/ny-annonse">Ny stillingsannonse</LinkCardAnchor>
                     </LinkCardTitle>
                     <LinkCardDescription>

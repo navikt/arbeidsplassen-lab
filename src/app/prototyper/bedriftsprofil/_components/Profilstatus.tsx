@@ -1,5 +1,5 @@
 import { BodyShort, Box, Heading, HStack, ProgressBar, Tag, VStack } from "@navikt/ds-react";
-import type { ProfileCompleteness } from "../_lib/types";
+import type { ProfileCompleteness } from "@/app/_common/bedriftsprofil/types";
 
 type ProfilstatusProps = {
     completeness: ProfileCompleteness;

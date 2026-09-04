@@ -1,6 +1,6 @@
 import { BodyShort, Box, HGrid, HStack, InfoCard, ProgressBar, Tag, VStack } from "@navikt/ds-react";
-import type { EmployerBadgeResult } from "../_lib/types";
-import BadgeIcon from "./BadgeIcon";
+import BadgeIcon from "@/app/_common/bedriftsprofil/BadgeIcon";
+import type { EmployerBadgeResult } from "@/app/_common/bedriftsprofil/types";
 import styles from "./BedriftsprofilArbeidsflate.module.css";
 
 export default function Aktivitetsmerker({ badges }: { badges: EmployerBadgeResult[] }) {

@@ -1,5 +1,5 @@
-export function getSafeExternalUrl(value: string): string | undefined {
-    const trimmedValue = value.trim();
+export function getSafeExternalUrl(rawValue: string): string | undefined {
+    const trimmedValue = rawValue.trim();
 
     if (!trimmedValue) {
         return undefined;

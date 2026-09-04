@@ -6,13 +6,13 @@ import { LinkCardAnchor, LinkCardDescription, LinkCardTitle } from "@navikt/ds-r
 import Image from "next/image";
 import NextLink from "next/link";
 import { useState } from "react";
-import { getPublicBadgeResults } from "../_lib/badges";
-import type { EmployerBadgeResult, EmployerJobSummary, EmployerProfile } from "../_lib/types";
-import { getSafeExternalUrl } from "../_lib/validation";
-import { profileHeroes, profileThemes } from "../_mock/profile";
-import BadgeIcon from "./BadgeIcon";
+import BadgeIcon from "@/app/_common/bedriftsprofil/BadgeIcon";
+import { getPublicBadgeResults } from "@/app/_common/bedriftsprofil/badges";
+import ProfilLogo from "@/app/_common/bedriftsprofil/ProfilLogo";
+import { profileHeroes, profileThemes } from "@/app/_common/bedriftsprofil/profile";
+import type { EmployerBadgeResult, EmployerJobSummary, EmployerProfile } from "@/app/_common/bedriftsprofil/types";
+import { getSafeExternalUrl } from "@/app/_common/bedriftsprofil/validation";
 import styles from "./BedriftsprofilArbeidsflate.module.css";
-import ProfilLogo from "./ProfilLogo";
 
 type OffentligBedriftsprofilProps = {
     profile: EmployerProfile;
